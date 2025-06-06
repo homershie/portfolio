@@ -87,8 +87,15 @@
                 </a>
               </li>
             </ul>
-            <button class="navbar-toggler" type="button" @click="toggleMenu">
-              <span class="icon-bar"><i class="fas fa-bars"></i></span>
+            <button
+              class="navbar-toggler"
+              type="button"
+              @click="toggleMenu"
+              :class="{ active: isMenuOpen }"
+            >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
           </div>
         </div>
@@ -98,13 +105,38 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const isMenuOpen = ref(false)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
+
+onMounted(() => {
+  document.querySelectorAll('.rolling-text').forEach((element) => {
+    if (element.querySelector('.letter')) return
+    const innerText = element.innerText
+    element.innerHTML = ''
+
+    const textContainer = document.createElement('div')
+    textContainer.classList.add('block')
+
+    for (const letter of innerText) {
+      const span = document.createElement('span')
+      span.innerText = letter.trim() === '' ? '\xa0' : letter
+      span.classList.add('letter')
+      textContainer.appendChild(span)
+    }
+
+    element.appendChild(textContainer)
+    element.appendChild(textContainer.cloneNode(true))
+
+    element.addEventListener('mouseover', () => {
+      element.classList.remove('play')
+    })
+  })
+})
 </script>
 
 <style lang="scss" scoped>
