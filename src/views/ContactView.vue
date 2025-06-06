@@ -377,19 +377,32 @@ async function submitForm() {
 }
 
 .contact-alternatives {
-  border-top: 1px solid #eee;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 40px;
+  color: #fff;
 }
 
 .contact-card {
-  background: #f8f9fa;
+  background: #0c0c0c;
   border-radius: 10px;
   transition: all 0.3s ease;
   height: 100%;
+  color: #fff;
+  position: relative;
+}
+
+.contact-card:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.04));
+  opacity: 0.3;
+  border-radius: 10px;
+  pointer-events: none;
 }
 
 .contact-card:hover {
-  background: #e9ecef;
+  background: #1a1a1a;
   transform: translateY(-5px);
 }
 
