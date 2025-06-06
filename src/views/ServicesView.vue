@@ -275,7 +275,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/src/assets/imgs/brands/b1.png" alt="合作品牌" />
+                  <img src="/imgs/brands/b1.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -284,7 +284,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/src/assets/imgs/brands/b2.png" alt="合作品牌" />
+                  <img src="/imgs/brands/b2.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -293,7 +293,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/src/assets/imgs/brands/b3.png" alt="合作品牌" />
+                  <img src="/imgs/brands/b3.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -302,7 +302,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/src/assets/imgs/brands/b4.png" alt="合作品牌" />
+                  <img src="/imgs/brands/b4.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -311,7 +311,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/src/assets/imgs/brands/b1.png" alt="合作品牌" />
+                  <img src="/imgs/brands/b1.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -320,7 +320,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/src/assets/imgs/brands/b3.png" alt="合作品牌" />
+                  <img src="/imgs/brands/b3.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
