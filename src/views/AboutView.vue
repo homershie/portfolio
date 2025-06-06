@@ -330,13 +330,8 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import { Swiper, Navigation, Pagination, Autoplay } from 'swiper'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
 
-// 註冊 Swiper 模組
-Swiper.use([Navigation, Pagination, Autoplay])
+// Swiper is provided globally via CDN script included in index.html
 
 onMounted(() => {
   // 技能進度條動畫
@@ -347,7 +342,8 @@ onMounted(() => {
   })
 
   // 初始化 Swiper
-  new Swiper('.resume-swiper .swiper-container', {
+   
+  new window.Swiper('.resume-swiper .swiper-container', {
     spaceBetween: 50,
     speed: 1000,
     loop: true,
