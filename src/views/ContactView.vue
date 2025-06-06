@@ -43,48 +43,19 @@
                 </div>
                 <div class="ml-auto">
                   <h4>
-                    <a href="mailto:homerxworkshop@gmail.com"> homerxworkshop@gmail.com </a>
+                    <a href="mailto:homerxworkshop@gmail.com">homerxworkshop@gmail.com</a>
                   </h4>
-                </div>
-              </div>
-              <div class="item mb-30 d-flex align-items-center">
-                <div class="mr-15">
-                  <span class="icon fz-40 main-color pe-7s-map-marker"></span>
-                </div>
-                <div class="mr-10">
-                  <h6 class="opacity-7">地址</h6>
-                </div>
-                <div class="ml-auto">
-                  <h4>新北市板橋區，台灣</h4>
                 </div>
               </div>
               <div class="item d-flex align-items-center">
                 <div class="mr-15">
-                  <span class="icon fz-40 main-color pe-7s-users"></span>
+                  <span class="icon fz-40 main-color pe-7s-map-marker"></span>
                 </div>
                 <div class="mr-10">
-                  <h6 class="opacity-7">社群媒體</h6>
+                  <h6 class="opacity-7">Address</h6>
                 </div>
                 <div class="ml-auto">
-                  <div class="social-links">
-                    <a
-                      href="https://www.instagram.com/homer_create"
-                      target="_blank"
-                      class="social-link"
-                    >
-                      <i class="fab fa-instagram"></i>
-                    </a>
-                    <a
-                      href="https://www.pinterest.com/HomerShie/"
-                      target="_blank"
-                      class="social-link"
-                    >
-                      <i class="fab fa-pinterest"></i>
-                    </a>
-                    <a href="https://medium.com/homer-create" target="_blank" class="social-link">
-                      <i class="fab fa-medium"></i>
-                    </a>
-                  </div>
+                  <h4>新北市板橋區，台灣</h4>
                 </div>
               </div>
             </div>
@@ -158,48 +129,6 @@
                   </div>
                 </div>
               </form>
-
-              <div class="contact-alternatives mt-50">
-                <h5 class="mb-30">其他聯絡方式</h5>
-                <div class="row">
-                  <div class="col-md-4 mb-20">
-                    <div class="contact-card text-center p-20">
-                      <i class="fab fa-instagram fz-30 main-color mb-15"></i>
-                      <h6>Instagram</h6>
-                      <p class="fz-14">查看我的最新作品</p>
-                      <a
-                        href="https://www.instagram.com/homer_create"
-                        target="_blank"
-                        class="contact-link"
-                      >
-                        關注我
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-20">
-                    <div class="contact-card text-center p-20">
-                      <i class="fab fa-medium fz-30 main-color mb-15"></i>
-                      <h6>Medium</h6>
-                      <p class="fz-14">閱讀設計相關文章</p>
-                      <a
-                        href="https://medium.com/homer-create"
-                        target="_blank"
-                        class="contact-link"
-                      >
-                        閱讀文章
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-20">
-                    <div class="contact-card text-center p-20">
-                      <i class="fas fa-envelope fz-30 main-color mb-15"></i>
-                      <h6>直接信件</h6>
-                      <p class="fz-14">發送詳細需求</p>
-                      <a href="mailto:homerxworkshop@gmail.com" class="contact-link"> 立即聯絡 </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
