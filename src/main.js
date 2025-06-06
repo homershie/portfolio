@@ -7,7 +7,23 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+// Font Awesome 配置
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+// 從 free-regular-svg-icons 引入圖標
+import { faEnvelope, faMap, faUser, faComments } from '@fortawesome/free-regular-svg-icons'
+
+// 引入品牌圖標
+import { faInstagram, faPinterest, faMedium, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+
+// 將圖標添加到庫中
+library.add(faEnvelope, faMap, faUser, faComments, faInstagram, faPinterest, faMedium, faLinkedin)
+
 const app = createApp(App)
+
+// 註冊 FontAwesome 組件
+app.component('font-awesome-icon', FontAwesomeIcon)
 
 app.use(createPinia())
 app.use(router)

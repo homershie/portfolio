@@ -36,7 +36,7 @@
             <div class="info full-width md-mb80">
               <div class="item mb-30 d-flex align-items-center">
                 <div class="mr-15">
-                  <span class="icon fz-40 main-color pe-7s-mail"></span>
+                  <font-awesome-icon :icon="['far', 'envelope']" class="icon main-color" />
                 </div>
                 <div class="mr-10">
                   <h6 class="opacity-7">電子信箱</h6>
@@ -49,7 +49,7 @@
               </div>
               <div class="item d-flex align-items-center">
                 <div class="mr-15">
-                  <span class="icon fz-40 main-color pe-7s-map-marker"></span>
+                  <font-awesome-icon :icon="['far', 'map']" class="icon main-color" />
                 </div>
                 <div class="mr-10">
                   <h6 class="opacity-7">Address</h6>
@@ -228,8 +228,6 @@ async function submitForm() {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
   color: var(--maincolor);
   font-size: 20px;
 }
