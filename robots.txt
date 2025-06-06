@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# 允許搜尋引擎索引
+Sitemap: https://homershie.com/sitemap.xml
+
+# 不允許索引的路徑（如果有的話）
+# Disallow: /admin/
+# Disallow: /private/

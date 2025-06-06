@@ -13,6 +13,39 @@ document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   /* =============================================================================
+      --------------------------------  Performance & Error Handling   --------------------------------
+      ============================================================================= */
+
+  // Image error handling
+  function handleImageErrors() {
+    const images = document.querySelectorAll("img");
+    images.forEach((img) => {
+      img.addEventListener("error", function () {
+        console.warn("Image failed to load:", this.src);
+        // 可以設置備用圖片
+        // this.src = 'assets/imgs/placeholder.jpg';
+        this.alt = "圖片載入失敗";
+      });
+    });
+  }
+
+  // External link security
+  function secureExternalLinks() {
+    const externalLinks = document.querySelectorAll(
+      'a[href^="http"]:not([href*="' + window.location.hostname + '"])'
+    );
+    externalLinks.forEach((link) => {
+      if (!link.getAttribute("rel")) {
+        link.setAttribute("rel", "noopener noreferrer");
+      }
+    });
+  }
+
+  // Initialize performance optimizations
+  handleImageErrors();
+  secureExternalLinks();
+
+  /* =============================================================================
       -----------------------------  Smooth Scroll nav   -----------------------------
       ============================================================================= */
 

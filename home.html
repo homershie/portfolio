@@ -17,6 +17,64 @@
     <meta name="keywords" content="設計,動畫,插畫,藝術,homer shie,作品集" />
     <meta name="revised" content="2024/8/1" />
 
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="荷馬桑 Homer Shie｜設計 ‧ 插畫 ‧ 動畫 ‧ 藝術 | 台北"
+    />
+    <meta
+      property="og:description"
+      content="Hi！這裡是荷馬桑 Homer Shie，台灣的自由接案工作者，擅長平面設計、插畫以及動畫，這個網站是我的個人網頁，對我有興趣就大方地進來吧！"
+    />
+    <meta property="og:image" content="assets/imgs/header/profile.jpg" />
+    <meta property="og:url" content="https://homershie.com/home.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="荷馬桑 Homer Shie｜設計 ‧ 插畫 ‧ 動畫 ‧ 藝術 | 台北"
+    />
+    <meta
+      name="twitter:description"
+      content="Hi！這裡是荷馬桑 Homer Shie，台灣的自由接案工作者，擅長平面設計、插畫以及動畫"
+    />
+    <meta name="twitter:image" content="assets/imgs/header/profile.jpg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Homer Shie",
+        "alternateName": "荷馬桑",
+        "jobTitle": "視覺設計師",
+        "description": "台灣的自由接案工作者，擅長平面設計、插畫以及動畫",
+        "url": "https://homershie.com",
+        "image": "https://homershie.com/assets/imgs/header/profile.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "台北",
+          "addressCountry": "TW"
+        },
+        "sameAs": [
+          "https://www.instagram.com/homer_create",
+          "https://www.pinterest.com/HomerShie/",
+          "https://medium.com/homer-create"
+        ],
+        "knowsAbout": ["設計", "動畫", "插畫", "藝術", "平面設計", "3D動畫"],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "視覺設計師",
+          "occupationLocation": {
+            "@type": "City",
+            "name": "台北"
+          }
+        }
+      }
+    </script>
+
     <!-- Title  -->
     <title>荷馬桑 Homer Shie｜設計 ‧ 插畫 ‧ 動畫 ‧ 藝術 | 台北</title>
 
@@ -118,7 +176,11 @@
             <div class="bord">
               <!-- Logo -->
               <a class="logo icon-img-120" href="home.html">
-                <img src="assets/imgs/logo-light.png" alt="logo" />
+                <img
+                  src="assets/imgs/logo-light.png"
+                  alt="荷馬桑 Homer Shie - 視覺設計師標誌"
+                  loading="eager"
+                />
               </a>
             </div>
           </div>
@@ -165,19 +227,34 @@
             <div class="bord d-flex justify-content-end">
               <ul class="social d-flex rest">
                 <li>
-                  <a href="https://www.instagram.com/homer_create"
-                    ><i class="fab fa-instagram"></i
-                  ></a>
+                  <a
+                    href="https://www.instagram.com/homer_create"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    aria-label="前往 Instagram 查看荷馬桑作品"
+                  >
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                  </a>
                 </li>
                 <li>
-                  <a href="https://www.pinterest.com/HomerShie/"
-                    ><i class="fab fa-pinterest"></i
-                  ></a>
+                  <a
+                    href="https://www.pinterest.com/HomerShie/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    aria-label="前往 Pinterest 查看荷馬桑作品"
+                  >
+                    <i class="fab fa-pinterest" aria-hidden="true"></i>
+                  </a>
                 </li>
                 <li>
-                  <a href="https://medium.com/homer-create"
-                    ><i class="fab fa-medium"></i
-                  ></a>
+                  <a
+                    href="https://medium.com/homer-create"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    aria-label="前往 Medium 閱讀荷馬桑文章"
+                  >
+                    <i class="fab fa-medium" aria-hidden="true"></i>
+                  </a>
                 </li>
               </ul>
               <button class="navbar-toggler" type="button">
@@ -331,34 +408,60 @@
               <div class="author-profile">
                 <div class="author-img">
                   <div class="img">
-                    <img src="assets/imgs/header/profile.jpg" alt="" />
+                    <img
+                      src="assets/imgs/header/profile.jpg"
+                      alt="荷馬桑 Homer Shie 個人照片"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <div class="author-info">
                   <div class="text-center">
                     <span class="main-color sub-title mb-10"
-                      >UI / UX Designer</span
+                      >視覺設計師 / 動態設計師</span
                     >
-                    <h4 class="fw-500">Hi, I'm Andrew Tate</h4>
+                    <h4 class="fw-500">Hi, 我是荷馬桑 Homer Shie</h4>
                   </div>
                   <div class="social mt-20">
-                    <a href="#0" class="icon">
-                      <i class="fab fa-linkedin-in"></i>
+                    <a
+                      href="https://www.instagram.com/homer_create"
+                      class="icon"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      aria-label="前往 Instagram"
+                    >
+                      <i class="fab fa-instagram" aria-hidden="true"></i>
                     </a>
-                    <a href="#0" class="icon">
-                      <i class="fab fa-behance"></i>
+                    <a
+                      href="https://www.pinterest.com/HomerShie/"
+                      class="icon"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      aria-label="前往 Pinterest"
+                    >
+                      <i class="fab fa-pinterest" aria-hidden="true"></i>
                     </a>
-                    <a href="#0" class="icon">
-                      <i class="fab fa-dribbble"></i>
+                    <a
+                      href="https://medium.com/homer-create"
+                      class="icon"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      aria-label="前往 Medium"
+                    >
+                      <i class="fab fa-medium" aria-hidden="true"></i>
                     </a>
                   </div>
                 </div>
                 <div class="butns mt-30">
-                  <a href="#0" class="inf-butn" data-scroll-nav="4">
-                    <span>Contact Us</span>
+                  <a href="contact.html" class="inf-butn" data-scroll-nav="4">
+                    <span>聯絡我</span>
                   </a>
-                  <a href="#0" class="inf-butn">
-                    <span>Dwonload CV</span>
+                  <a
+                    href="assets/resume/Homer_Shie_Resume.pdf"
+                    class="inf-butn"
+                    target="_blank"
+                  >
+                    <span>下載履歷</span>
                   </a>
                 </div>
               </div>
@@ -438,6 +541,7 @@
                   <a
                     href="https://themeforest.net/user/ui-themez"
                     target="_blank"
+                    rel="noopener noreferrer"
                     >Ui-ThemeZ</a
                   >
                 </span>
