@@ -121,7 +121,7 @@
               <div class="author-img">
                 <div class="img">
                   <img
-                    src="@/assets/imgs/header/profile.jpg"
+                    src="/assets/imgs/header/profile.jpg"
                     alt="荷馬桑 Homer Shie 個人照片"
                     loading="lazy"
                   />

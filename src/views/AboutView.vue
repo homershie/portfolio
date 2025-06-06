@@ -7,19 +7,19 @@
           <div class="col-lg-5 valign">
             <div class="profile-img">
               <div class="img">
-                <img src="/imgs/header/profile.jpg" alt="荷馬桑個人照片" />
+                <img src="/assets/imgs/header/profile.jpg" alt="荷馬桑個人照片" />
               </div>
               <span class="icon">
-                <img src="/imgs/header/icon1.png" alt="" />
+                <img src="/assets/imgs/header/icon1.png" alt="" />
               </span>
               <span class="icon">
-                <img src="/imgs/header/icon2.png" alt="" />
+                <img src="/assets/imgs/header/icon2.png" alt="" />
               </span>
               <span class="icon">
-                <img src="/imgs/header/icon3.png" alt="" />
+                <img src="/assets/imgs/header/icon3.png" alt="" />
               </span>
               <span class="icon">
-                <img src="/imgs/header/icon4.png" alt="" />
+                <img src="/assets/imgs/header/icon4.png" alt="" />
               </span>
             </div>
           </div>
@@ -132,7 +132,7 @@
               <div class="d-flex align-items-center mb-30">
                 <div class="mr-30">
                   <div class="img icon-img-40">
-                    <img src="/imgs/resume/s1.png" alt="平面設計" />
+                    <img src="/assets/imgs/resume/s1.png" alt="平面設計" />
                   </div>
                 </div>
                 <div>
@@ -150,7 +150,7 @@
               <div class="d-flex align-items-center mb-30">
                 <div class="mr-30">
                   <div class="img icon-img-40">
-                    <img src="/imgs/resume/s2.png" alt="插畫" />
+                    <img src="/assets/imgs/resume/s2.png" alt="插畫" />
                   </div>
                 </div>
                 <div>
@@ -168,7 +168,7 @@
               <div class="d-flex align-items-center mb-30">
                 <div class="mr-30">
                   <div class="img icon-img-40">
-                    <img src="/imgs/resume/s3.png" alt="動態設計" />
+                    <img src="/assets/imgs/resume/s3.png" alt="動態設計" />
                   </div>
                 </div>
                 <div>
@@ -186,7 +186,7 @@
               <div class="d-flex align-items-center mb-30">
                 <div class="mr-30">
                   <div class="img icon-img-40">
-                    <img src="/imgs/resume/s4.png" alt="3D動畫" />
+                    <img src="/assets/imgs/resume/s4.png" alt="3D動畫" />
                   </div>
                 </div>
                 <div>
@@ -204,7 +204,7 @@
               <div class="d-flex align-items-center mb-30">
                 <div class="mr-30">
                   <div class="img icon-img-40">
-                    <img src="/imgs/resume/s5.png" alt="UI設計" />
+                    <img src="/assets/imgs/resume/s5.png" alt="UI設計" />
                   </div>
                 </div>
                 <div>
@@ -222,7 +222,7 @@
               <div class="d-flex align-items-center mb-30">
                 <div class="mr-30">
                   <div class="img icon-img-40">
-                    <img src="/imgs/resume/s6.png" alt="網頁開發" />
+                    <img src="/assets/imgs/resume/s6.png" alt="網頁開發" />
                   </div>
                 </div>
                 <div>
@@ -342,7 +342,7 @@ onMounted(() => {
   })
 
   // 初始化 Swiper
-   
+
   new window.Swiper('.resume-swiper .swiper-container', {
     spaceBetween: 50,
     speed: 1000,

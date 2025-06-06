@@ -23,7 +23,7 @@
                 <div class="d-flex align-items-center mb-30">
                   <div>
                     <span class="icon-img-50 mr-40">
-                      <img src="/imgs/serv-img/1.png" alt="平面設計" />
+                      <img src="/assets/imgs/serv-img/1.png" alt="平面設計" />
                     </span>
                   </div>
                   <div>
@@ -47,7 +47,7 @@
                 <div class="d-flex align-items-center mb-30">
                   <div>
                     <span class="icon-img-50 mr-40">
-                      <img src="/imgs/serv-img/2.png" alt="動態設計" />
+                      <img src="/assets/imgs/serv-img/2.png" alt="動態設計" />
                     </span>
                   </div>
                   <div>
@@ -71,7 +71,7 @@
                 <div class="d-flex align-items-center mb-30">
                   <div>
                     <span class="icon-img-50 mr-40">
-                      <img src="/imgs/serv-img/3.png" alt="插畫創作" />
+                      <img src="/assets/imgs/serv-img/3.png" alt="插畫創作" />
                     </span>
                   </div>
                   <div>
@@ -95,7 +95,7 @@
                 <div class="d-flex align-items-center mb-30">
                   <div>
                     <span class="icon-img-50 mr-40">
-                      <img src="/imgs/serv-img/4.png" alt="3D動畫" />
+                      <img src="/assets/imgs/serv-img/4.png" alt="3D動畫" />
                     </span>
                   </div>
                   <div>
@@ -119,7 +119,7 @@
                 <div class="d-flex align-items-center mb-30">
                   <div>
                     <span class="icon-img-50 mr-40">
-                      <img src="/imgs/serv-img/1.png" alt="品牌設計" />
+                      <img src="/assets/imgs/serv-img/1.png" alt="品牌設計" />
                     </span>
                   </div>
                   <div>
@@ -143,7 +143,7 @@
                 <div class="d-flex align-items-center mb-30">
                   <div>
                     <span class="icon-img-50 mr-40">
-                      <img src="/imgs/serv-img/1.png" alt="UI設計" />
+                      <img src="/assets/imgs/serv-img/1.png" alt="UI設計" />
                     </span>
                   </div>
                   <div>
@@ -275,7 +275,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/imgs/brands/b1.png" alt="合作品牌" />
+                  <img src="/assets/imgs/brands/b1.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -284,7 +284,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/imgs/brands/b2.png" alt="合作品牌" />
+                  <img src="/assets/imgs/brands/b2.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -293,7 +293,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/imgs/brands/b3.png" alt="合作品牌" />
+                  <img src="/assets/imgs/brands/b3.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -302,7 +302,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/imgs/brands/b4.png" alt="合作品牌" />
+                  <img src="/assets/imgs/brands/b4.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -311,7 +311,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/imgs/brands/b1.png" alt="合作品牌" />
+                  <img src="/assets/imgs/brands/b1.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
@@ -320,7 +320,7 @@
             <div class="item">
               <div class="img icon-img-100">
                 <a href="#0">
-                  <img src="/imgs/brands/b3.png" alt="合作品牌" />
+                  <img src="/assets/imgs/brands/b3.png" alt="合作品牌" />
                 </a>
               </div>
             </div>
