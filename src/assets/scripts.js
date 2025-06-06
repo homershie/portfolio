@@ -49,12 +49,20 @@ document.addEventListener("DOMContentLoaded", function () {
       -----------------------------  Smooth Scroll nav   -----------------------------
       ============================================================================= */
 
-  // Initialize smooth scroll
-  const scroll = new SmoothScroll('a[href*="#"]', {
-    speed: 600,
-    speedAsDuration: true,
-    easing: "easeInOutCubic",
-    offset: 0,
+  // Initialize smooth scroll without external dependencies
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+  anchorLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href");
+      if (targetId && targetId !== "#") {
+        e.preventDefault();
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
   });
 
   /* =============================================================================
