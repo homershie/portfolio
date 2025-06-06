@@ -163,7 +163,7 @@ function closeProject() {
 
 .filtering .filter .text:hover,
 .filtering .filter .text.active {
-  background-color: var(--main-color);
+  background-color: var(--maincolor);
   color: white;
 }
 
@@ -224,7 +224,7 @@ function closeProject() {
 }
 
 .project-info .category {
-  color: var(--main-color);
+  color: var(--maincolor);
   font-weight: 600;
   margin-bottom: 15px;
 }

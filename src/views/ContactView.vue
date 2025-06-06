@@ -192,24 +192,46 @@ async function submitForm() {
 }
 
 .info .item {
-  background: #f8f9fa;
-  padding: 20px;
+  padding: 30px 25px;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  position: relative;
+  background: #0c0c0c;
 }
 
-.info .item:hover {
-  background: #e9ecef;
+.info .item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.04));
+  opacity: 0.3;
+  pointer-events: none;
+  border-radius: 10px;
 }
 
-.info .item h4 a {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.info .item::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.01));
+  pointer-events: none;
+  border-radius: 10px;
 }
 
-.info .item h4 a:hover {
-  color: var(--main-color);
+.info .item .icon {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--maincolor);
+  font-size: 20px;
 }
 
 .social-links {
@@ -223,7 +245,7 @@ async function submitForm() {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: var(--main-color);
+  background: var(--maincolor);
   color: white;
   border-radius: 50%;
   text-decoration: none;
@@ -239,23 +261,24 @@ async function submitForm() {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #333;
+  color: #fff;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  outline: none;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: transparent;
+  color: #fff;
   transition: border-color 0.3s ease;
   font-family: inherit;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: var(--main-color);
+  border-color: #fff;
 }
 
 .form-group input:disabled,
@@ -265,20 +288,21 @@ async function submitForm() {
 }
 
 .submit-btn {
-  background: var(--main-color);
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 25px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 35px;
+  width: 100%;
+  border-radius: 15px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.4s;
   min-width: 150px;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #333;
-  transform: translateY(-2px);
+  background: var(--maincolor);
+  color: #1d1d1d;
 }
 
 .submit-btn:disabled {
@@ -336,7 +360,7 @@ async function submitForm() {
 }
 
 .contact-link {
-  color: var(--main-color);
+  color: var(--maincolor);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
