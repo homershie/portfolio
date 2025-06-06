@@ -192,7 +192,7 @@ function closeBlogPost() {
 
 <style scoped>
 .read-more {
-  color: var(--main-color);
+  color: var(--maincolor);
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -231,7 +231,7 @@ function closeBlogPost() {
   font-size: 18px;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--maincolor);
 }
 
 .catogry ul li {
@@ -253,7 +253,7 @@ function closeBlogPost() {
 }
 
 .catogry ul li a:hover {
-  color: var(--main-color);
+  color: var(--maincolor);
 }
 
 .last-post-thum .item {
@@ -368,7 +368,7 @@ function closeBlogPost() {
 
 .category-tag {
   display: inline-block;
-  background-color: var(--main-color);
+  background-color: var(--maincolor);
   color: white;
   padding: 5px 15px;
   border-radius: 15px;
@@ -399,7 +399,7 @@ function closeBlogPost() {
 }
 
 .medium-link:hover {
-  background-color: var(--main-color);
+  background-color: var(--maincolor);
 }
 
 @media (max-width: 768px) {
