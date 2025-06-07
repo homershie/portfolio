@@ -8,12 +8,12 @@
               <div class="d-inline-block">
                 <div class="sub-title-icon d-flex align-items-center">
                   <span class="icon pe-7s-portfolio"></span>
-                  <h6>My Portfolio</h6>
+                  <h6>我的作品</h6>
                 </div>
               </div>
               <h3>
-                Helping digital brands <br />
-                scale with design.
+                透過視覺方法 <br />
+                讓萬物賦予意義
               </h3>
             </div>
           </div>

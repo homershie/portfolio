@@ -313,14 +313,10 @@ onMounted(() => {
     spaceBetween: 50,
     speed: 1000,
     loop: false,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
     pagination: {
       el: '.resume-swiper .swiper-pagination',
       clickable: true,
-      dynamicBullets: true, // 不要用動態分頁
+      dynamicBullets: false, // 不要用動態分頁
       type: 'bullets', // 預設就是 bullets
     },
     breakpoints: {

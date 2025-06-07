@@ -4,21 +4,35 @@
       <div class="container">
         <div v-if="project" class="row justify-content-center">
           <div class="col-lg-12">
-            <div class="img mb-80">
-              <img :src="project.mainImage" :alt="project.title" class="radius-5" />
+            <div class="img mb-80 text-center">
+              <template v-if="project.type === 'video'">
+                <iframe
+                  :src="project.video"
+                  class="radius-5 w-75 h-auto"
+                  style="aspect-ratio: 16/9"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </template>
+              <template v-else>
+                <img :src="project.mainImage" :alt="project.title" class="radius-5 w-50" />
+              </template>
             </div>
             <div class="row justify-content-center">
               <div class="col-lg-7">
                 <div class="cont md-mb50">
                   <h3 class="mb-15 fw-500">{{ project.title }}</h3>
-                  <div v-html="project.description"></div>
+                  <p v-html="formattedDescription"></p>
 
                   <!-- 圖片畫廊 -->
-                  <div v-if="project.gallery && project.gallery.length" class="imgs mt-80">
+                  <div
+                    v-if="project.gallery && project.gallery.some((image) => image)"
+                    class="imgs mt-80"
+                  >
                     <div class="row md-marg">
                       <div v-for="(image, index) in project.gallery" :key="index" class="col-md-6">
                         <div class="img sm-mb30">
-                          <img :src="image" :alt="`${project.title} ${index + 1}`" />
+                          <img v-if="image" :src="image" :alt="`${project.title} ${index + 1}`" />
                         </div>
                       </div>
                     </div>
@@ -32,18 +46,18 @@
                       <span class="sub-title">
                         <i class="far fa-calendar-alt mr-10"></i> 日期 :
                       </span>
-                      <p>{{ project.date }}</p>
+                      <p>{{ formatDate(project.date) }}</p>
                     </li>
                     <li class="mb-30">
                       <span class="sub-title"> <i class="fas fa-list-ul mr-10"></i> 類別 : </span>
-                      <p>{{ project.category }}</p>
+                      <p>{{ formatCategory(project.category) }}</p>
                     </li>
                     <li class="mb-30" v-if="project.client">
                       <span class="sub-title"> <i class="far fa-user mr-10"></i> 客戶 : </span>
                       <p>{{ project.client }}</p>
                     </li>
                     <li v-if="project.website">
-                      <span class="sub-title"> <i class="fas fa-globe mr-10"></i> 網站 : </span>
+                      <span class="sub-title"> <i class="fas fa-globe mr-10"></i> 連結 : </span>
                       <p>
                         <a :href="project.website" target="_blank">{{ project.website }}</a>
                       </p>
@@ -61,7 +75,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePortfolio } from '@/composables/usePortfolio.js'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
@@ -70,9 +84,49 @@ const route = useRoute()
 const project = ref(null)
 const { loadPortfolio, getWorkById } = usePortfolio()
 
+// 格式化描述文字，將 \n 轉換為 <br>
+const formattedDescription = computed(() => {
+  if (!project.value?.description) return ''
+  return project.value.description.replace(/\n/g, '<br>')
+})
+
+// 格式化日期
+const formatDate = (dateString) => {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  return date.toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
+// 格式化類別陣列
+const formatCategory = (categories) => {
+  if (!categories) return ''
+  if (Array.isArray(categories)) {
+    return categories.join(', ')
+  }
+  return categories
+}
+
 onMounted(async () => {
   await loadPortfolio()
   const projectId = route.params.id
   project.value = getWorkById(projectId)
+
+  // 確保 gallery 是陣列
+  if (!project.value.gallery || !Array.isArray(project.value.gallery)) {
+    project.value.gallery = []
+  }
 })
 </script>
+
+<style scoped>
+a {
+  transition: all 0.3s;
+}
+a:hover {
+  color: var(--maincolor);
+}
+</style>

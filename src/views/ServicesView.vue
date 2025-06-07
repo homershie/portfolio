@@ -12,7 +12,7 @@
                   <h6>我的服務</h6>
                 </div>
               </div>
-              <h3>我提供什麼服務？</h3>
+              <h3>我有哪些方式讓您眼前一亮？</h3>
             </div>
           </div>
         </div>
@@ -32,12 +32,8 @@
                   </div>
                 </div>
                 <p>
-                  專精於品牌識別設計、海報設計、包裝設計等平面媒體創作，
-                  運用創新的視覺語言傳達品牌價值與概念。
+                  擅長品牌識別、海報與包裝設計，從色彩到構圖，每一筆都蘊含策略思維與視覺魔法，協助你在一眼之間脫穎而出。
                 </p>
-                <router-link to="/portfolio" class="mt-30">
-                  <span>查看作品</span>
-                </router-link>
               </div>
             </div>
           </div>
@@ -56,12 +52,8 @@
                   </div>
                 </div>
                 <p>
-                  專業的Motion Graphics設計，包含品牌動畫、產品介紹影片、
-                  社群媒體動態內容等動態視覺表現。
+                  為靜態畫面注入靈魂，打造流暢、有記憶點的動畫內容——不論是品牌動畫、行銷短片，或社群用的動態視覺，皆能呈現故事的脈動。
                 </p>
-                <router-link to="/portfolio" class="mt-30">
-                  <span>查看作品</span>
-                </router-link>
               </div>
             </div>
           </div>
@@ -80,12 +72,8 @@
                   </div>
                 </div>
                 <p>
-                  風格多樣的插畫創作，涵蓋商業插畫、角色設計、
-                  書籍插圖等，為品牌注入獨特的視覺個性。
+                  從奇想世界到品牌角色，風格橫跨可愛、極簡、奇幻與實驗。每一筆插畫不只是圖像，而是能與觀者對話的故事容器。
                 </p>
-                <router-link to="/portfolio" class="mt-30">
-                  <span>查看作品</span>
-                </router-link>
               </div>
             </div>
           </div>
@@ -100,16 +88,12 @@
                   </div>
                   <div>
                     <span class="opacity-7 fz-13 mb-5">8+ 專案</span>
-                    <h5 class="fz-20">3D動畫</h5>
+                    <h5 class="fz-20">3D</h5>
                   </div>
                 </div>
                 <p>
-                  立體視覺效果與3D動畫製作，提供更具沉浸感的視覺體驗，
-                  適用於產品展示與品牌形象提升。
+                  利用3D模型與動畫打造立體世界，讓幻想栩栩如生，把概念化為實體，為品牌和行銷帶來更高維度的想像空間。
                 </p>
-                <router-link to="/portfolio" class="mt-30">
-                  <span>查看作品</span>
-                </router-link>
               </div>
             </div>
           </div>
@@ -119,7 +103,7 @@
                 <div class="d-flex align-items-center mb-30">
                   <div>
                     <span class="icon-img-50 mr-40">
-                      <img src="/assets/imgs/serv-img/1.png" alt="品牌設計" />
+                      <img src="/assets/imgs/serv-img/5.png" alt="品牌設計" />
                     </span>
                   </div>
                   <div>
@@ -128,12 +112,9 @@
                   </div>
                 </div>
                 <p>
-                  完整的品牌視覺識別系統規劃，從Logo設計到應用系統，
-                  為品牌建立一致且具有辨識度的視覺形象。
+                  從 Logo
+                  到整體識別系統，量身打造一套視覺語言，讓品牌在每個接觸點都一致、鮮明且令人記住，打造專屬於你的符號學。
                 </p>
-                <router-link to="/portfolio" class="mt-30">
-                  <span>查看作品</span>
-                </router-link>
               </div>
             </div>
           </div>
@@ -143,20 +124,17 @@
                 <div class="d-flex align-items-center mb-30">
                   <div>
                     <span class="icon-img-50 mr-40">
-                      <img src="/assets/imgs/serv-img/1.png" alt="UI設計" />
+                      <img src="/assets/imgs/serv-img/6.png" alt="UI設計" />
                     </span>
                   </div>
                   <div>
                     <span class="opacity-7 fz-13 mb-5">10+ 專案</span>
-                    <h5 class="fz-20">UI設計</h5>
+                    <h5 class="fz-20">網頁前端設計</h5>
                   </div>
                 </div>
                 <p>
-                  使用者介面設計與用戶體驗優化，結合美學與功能性， 創造直覺且吸引人的數位產品介面。
+                  結合設計美感與互動邏輯，打造富有視覺張力且使用直覺的網站介面。讓使用者不只瀏覽，而是享受每一次的點擊與滑動。
                 </p>
-                <router-link to="/portfolio" class="mt-30">
-                  <span>查看作品</span>
-                </router-link>
               </div>
             </div>
           </div>
@@ -178,15 +156,17 @@
                   <h6>合作方案</h6>
                 </div>
               </div>
-              <h3>為您的專案提供合理的價格</h3>
-              <p class="mt-15">我專注於與客戶深度合作，解決設計難題並為他們創造更多價值。</p>
+              <h3>讓好的設計成為值得的投資</h3>
+              <p class="mt-15">
+                我重視與每一位客戶的深入溝通，致力於理解需求、解決設計挑戰，並透過專業的視覺語言為專案創造實質價值。
+              </p>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-6">
             <div class="item md-mb50">
-              <h6 class="type">基礎方案</h6>
+              <h6 class="type">平面設計方案</h6>
               <div class="content d-flex align-items-center">
                 <div class="amount mr-40">
                   <h2 class="main-color">議價</h2>
@@ -214,7 +194,7 @@
                     </li>
                     <li>
                       <i class="fas fa-check"></i>
-                      <span>修改 3 次內免費</span>
+                      <span>主視覺設計</span>
                     </li>
                   </ul>
                 </div>
@@ -223,7 +203,7 @@
           </div>
           <div class="col-lg-6">
             <div class="item">
-              <h6 class="type">進階方案</h6>
+              <h6 class="type">動態設計方案</h6>
               <div class="content d-flex align-items-center">
                 <div class="amount mr-40">
                   <h2 class="main-color">議價</h2>
@@ -239,10 +219,6 @@
                   <ul class="rest">
                     <li>
                       <i class="fas fa-check"></i>
-                      <span>完整品牌視覺系統</span>
-                    </li>
-                    <li>
-                      <i class="fas fa-check"></i>
                       <span>動態設計與動畫</span>
                     </li>
                     <li>
@@ -251,7 +227,11 @@
                     </li>
                     <li>
                       <i class="fas fa-check"></i>
-                      <span>專案全程支援</span>
+                      <span>影片特效與剪輯</span>
+                    </li>
+                    <li>
+                      <i class="fas fa-check"></i>
+                      <span>現代化網頁設計</span>
                     </li>
                   </ul>
                 </div>
@@ -271,57 +251,14 @@
           <h6>超過 <span class="main-color">67+ 專案</span> 的成功合作經驗</h6>
         </div>
         <div class="row">
-          <div class="col-sm-4 col-md-3 col-lg-2 col-6">
+          <div class="col">
             <div class="item">
-              <div class="img icon-img-100">
-                <a href="#0">
-                  <img src="/assets/imgs/brands/b1.png" alt="合作品牌" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-md-3 col-lg-2 col-6">
-            <div class="item">
-              <div class="img icon-img-100">
-                <a href="#0">
-                  <img src="/assets/imgs/brands/b2.png" alt="合作品牌" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-md-3 col-lg-2 col-6">
-            <div class="item">
-              <div class="img icon-img-100">
-                <a href="#0">
-                  <img src="/assets/imgs/brands/b3.png" alt="合作品牌" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-md-3 col-lg-2 col-6">
-            <div class="item">
-              <div class="img icon-img-100">
-                <a href="#0">
-                  <img src="/assets/imgs/brands/b4.png" alt="合作品牌" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-md-3 col-lg-2 col-6">
-            <div class="item">
-              <div class="img icon-img-100">
-                <a href="#0">
-                  <img src="/assets/imgs/brands/b1.png" alt="合作品牌" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-md-3 col-lg-2 col-6">
-            <div class="item">
-              <div class="img icon-img-100">
-                <a href="#0">
-                  <img src="/assets/imgs/brands/b3.png" alt="合作品牌" />
-                </a>
+              <div class="img w-25">
+                <img
+                  src="/assets/imgs/brands/garmin.png"
+                  style="filter: brightness(0.5)"
+                  alt="garmin-logo"
+                />
               </div>
             </div>
           </div>

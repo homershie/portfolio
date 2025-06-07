@@ -37,7 +37,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 const props = defineProps({
   works: {
     type: Array,
@@ -53,5 +58,56 @@ function viewDetails(work) {
 
 const sortedWorks = computed(() => {
   return [...props.works].sort((a, b) => b.id - a.id)
+})
+
+onMounted(() => {
+  const items = document.querySelectorAll('.items')
+
+  // 設定初始狀態
+  items.forEach((item) => {
+    gsap.set(item, { opacity: 0, y: 200, scale: 0.9 })
+  })
+
+  // 使用 Intersection Observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          gsap.to(entry.target, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: index * 0.1,
+          })
+
+          // 動畫完成後停止觀察這個元素
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -15% 0px', // 相當於 start: 'top 85%'
+    },
+  )
+
+  // 開始觀察所有項目
+  items.forEach((item) => {
+    observer.observe(item)
+  })
+
+  // 確保 Isotope 正確初始化
+  setTimeout(() => {
+    const container = document.querySelector('.gallery')
+    if (container) {
+      const iso = new Isotope(container, {
+        itemSelector: '.items',
+        layoutMode: 'masonry',
+      })
+      iso.layout() // 強制重新布局
+    }
+  }, 100)
 })
 </script>
