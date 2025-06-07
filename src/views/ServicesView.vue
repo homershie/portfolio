@@ -8,7 +8,7 @@
             <div class="col-lg-8 text-center">
               <div class="d-inline-block">
                 <div class="sub-title-icon d-flex align-items-center">
-                  <span class="icon pe-7s-bell"></span>
+                  <span class="icon fas fa-bell"></span>
                   <h6>我的服務</h6>
                 </div>
               </div>

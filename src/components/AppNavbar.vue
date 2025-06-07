@@ -68,12 +68,12 @@
               </li>
               <li>
                 <a
-                  href="https://www.pinterest.com/HomerShie/"
+                  href="https://github.com/homershie"
                   rel="noopener noreferrer"
                   target="_blank"
-                  aria-label="前往 Pinterest 查看荷馬桑作品"
+                  aria-label="前往 GitHub 查看荷馬桑的程式"
                 >
-                  <i class="fab fa-pinterest" aria-hidden="true"></i>
+                  <i class="fab fa-github" aria-hidden="true"></i>
                 </a>
               </li>
               <li>

@@ -8,7 +8,7 @@
             <div class="col-lg-8 text-center">
               <div class="d-inline-block">
                 <div class="sub-title-icon d-flex align-items-center">
-                  <span class="icon pe-7s-map-marker"></span>
+                  <span class="icon fas fa-map-marker-alt"></span>
                   <h6>聯絡我</h6>
                 </div>
               </div>

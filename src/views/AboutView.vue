@@ -26,7 +26,7 @@
           <div class="col-lg-7 valign">
             <div class="cont">
               <div class="sub-title-icon d-flex align-items-center">
-                <span class="icon pe-7s-gleam"></span>
+                <span class="icon fas fa-lightbulb"></span>
                 <h6>關於</h6>
               </div>
               <div class="text">

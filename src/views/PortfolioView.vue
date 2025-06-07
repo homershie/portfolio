@@ -7,7 +7,7 @@
             <div class="col-lg-8 text-center">
               <div class="d-inline-block">
                 <div class="sub-title-icon d-flex align-items-center">
-                  <span class="icon pe-7s-portfolio"></span>
+                  <span class="icon fas fa-briefcase"></span>
                   <h6>我的作品</h6>
                 </div>
               </div>
