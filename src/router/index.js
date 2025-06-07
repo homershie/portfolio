@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import PortfolioView from '@/views/PortfolioView.vue'
+import ProjectDetailView from '@/views/ProjectDetailView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -22,7 +24,13 @@ const router = createRouter({
     {
       path: '/portfolio',
       name: 'Portfolio',
-      component: () => import('@/views/PortfolioView.vue'),
+      component: PortfolioView,
+    },
+    {
+      path: '/project/:id',
+      name: 'ProjectDetail',
+      component: ProjectDetailView,
+      props: true,
     },
     {
       path: '/blogs',

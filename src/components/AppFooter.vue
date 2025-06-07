@@ -5,7 +5,7 @@
         <div class="col-12">
           <div class="text-center">
             <p class="fz-13">
-              © 2024 Homer Shie. Proudly powered by
+              © {{ currentYear }} Homer Shie. Proudly powered by
               <span class="underline main-color">
                 <a
                   href="https://themeforest.net/user/ui-themez"
@@ -23,7 +23,12 @@
 </template>
 
 <script setup>
-// 目前不需要任何 JavaScript 邏輯
+import { computed } from 'vue'
+
+// 動態取得當前年份
+const currentYear = computed(() => {
+  return new Date().getFullYear()
+})
 </script>
 
 <style lang="scss" scoped>

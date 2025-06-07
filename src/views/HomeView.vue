@@ -38,7 +38,7 @@
                         class="sub-item1 box-shadwo d-flex align-items-center justify-content-center"
                       >
                         <div class="text-center">
-                          <h2 class="fw-700">8</h2>
+                          <h2 class="fw-700">{{ experienceYear }}</h2>
                           <p class="fz-13">
                             年 <br />
                             工作經驗
@@ -97,12 +97,12 @@
                 </div>
                 <div class="item6 box-shadwo d-flex align-items-center justify-content-center">
                   <a
-                    href="https://www.pinterest.com/HomerShie/"
+                    href="https://github.com/homershie"
                     class="icon"
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    <i class="fab fa-pinterest"></i>
+                    <i class="fab fa-github"></i>
                   </a>
                 </div>
                 <div class="item7 box-shadwo d-flex align-items-center justify-content-center">
@@ -232,7 +232,13 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
+
+const experienceYear = computed(() => {
+  const startYear = 2018 // 假設從2018年開始工作
+  const currentYear = new Date().getFullYear()
+  return currentYear - startYear
+})
 
 onMounted(() => {
   // 初始化動畫效果

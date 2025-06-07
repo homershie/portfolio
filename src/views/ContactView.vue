@@ -39,7 +39,7 @@
                   <font-awesome-icon :icon="['far', 'envelope']" class="icon main-color" />
                 </div>
                 <div class="mr-10">
-                  <h6 class="opacity-7">電子信箱</h6>
+                  <h6 class="opacity-7">Email</h6>
                 </div>
                 <div class="ml-auto">
                   <h4>

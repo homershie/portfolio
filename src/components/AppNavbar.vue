@@ -130,7 +130,6 @@ onMounted(() => {
     }
 
     element.appendChild(textContainer)
-    element.appendChild(textContainer.cloneNode(true))
 
     element.addEventListener('mouseover', () => {
       element.classList.remove('play')
@@ -148,8 +147,8 @@ onMounted(() => {
 
   .logo {
     img {
-      max-height: 40px;
-      width: auto;
+      height: auto;
+      width: 100%;
     }
   }
 
@@ -190,6 +189,9 @@ onMounted(() => {
       }
     }
   }
+  .rolling-text {
+    vertical-align: middle;
+  }
 
   .nav-link {
     color: #fff !important;
@@ -212,11 +214,6 @@ onMounted(() => {
       height: 2px;
       background: var(--maincolor);
       transition: width 0.3s ease;
-    }
-
-    &:hover::after,
-    &.router-link-active::after {
-      width: 100%;
     }
   }
 
