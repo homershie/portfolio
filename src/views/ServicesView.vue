@@ -248,7 +248,9 @@
     <section class="brands section-padding pt-0">
       <div class="container with-pad">
         <div class="text-center">
-          <h6>超過 <span class="main-color">67+ 專案</span> 的成功合作經驗</h6>
+          <h6>
+            超過 <span class="main-color">{{ projectCount }}+ 專案</span> 的成功合作經驗
+          </h6>
         </div>
         <div class="row">
           <div class="col">
@@ -271,9 +273,22 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+const projectCount = ref(0) // 初始化專案數量
+
 function scrollToContact() {
   // 這裡可以添加滾動到聯絡表單的邏輯
   // 或者導航到聯絡頁面
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
 }
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/data/portfolio.json') // 載入 portfolio.json
+    const data = await response.json()
+    projectCount.value = data.length // 計算物件數量
+  } catch (error) {
+    console.error('載入 portfolio.json 時發生錯誤:', error)
+  }
+})
 </script>

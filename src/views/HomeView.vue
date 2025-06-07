@@ -197,7 +197,7 @@
                 <div class="d-flex align-items-center">
                   <div class="mr-40">
                     <div class="d-flex align-items-center">
-                      <h2>67</h2>
+                      <h2>{{ projectCount }}</h2>
                       <p>
                         件 <br />
                         已完成專案
@@ -232,7 +232,7 @@
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 const experienceYear = computed(() => {
   const startYear = 2018 // 假設從2018年開始工作
@@ -240,10 +240,15 @@ const experienceYear = computed(() => {
   return currentYear - startYear
 })
 
-onMounted(() => {
-  // 初始化動畫效果
-  if (typeof window !== 'undefined') {
-    // 這裡可以加入動畫初始化代碼
+const projectCount = ref(0) // 初始化專案數量
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/data/portfolio.json') // 載入 portfolio.json
+    const data = await response.json()
+    projectCount.value = data.length // 計算物件數量
+  } catch (error) {
+    console.error('載入 portfolio.json 時發生錯誤:', error)
   }
 })
 </script>
