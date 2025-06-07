@@ -1220,5 +1220,44 @@
     "client": "Gamin Ltd.",
     "date": "2025-4-17",
     "type": "image"
+  },
+  {
+    "id": 87,
+    "title": "流動的時鐘 Flowing Clock ",
+    "description": "流動中的時間：一場 Canvas 上的視覺實驗\n這不是普通的時鐘，而是一場時間與動態設計的融合練習。以 JavaScript 操作 Canvas，呈現每秒流動的抽象曲線與時分秒結構，結合程式邏輯與視覺美感。是作品，也是冥想。\n\nTime in Motion: A Visual Meditation with Canvas\nMore than just a clock, this is a visual experiment in the fluidity of time. Using JavaScript and Canvas, abstract curves flow and morph with every passing second. A fusion of logic and aesthetics—a poetic visualization of time you can watch unfold.",
+    "website": "https://github.com/homershie/flowing_clock",
+    "image": "/assets/imgs/works/work_0087.png",
+    "mainImage": "/assets/imgs/works/work_0087.png",
+    "gallery": [],
+    "category": ["網頁設計", "UI/UX"],
+    "client": "N/A",
+    "date": "2025-5-2",
+    "type": "image"
+  },
+  {
+    "id": 88,
+    "title": "財富的重量 Weight of Wealth",
+    "description": "一場關於熱量、慾望與資本的點擊遊戲實驗。\n在這款迷因風格的增量式遊戲中，你不是賺錢，而是囤積熱量。點擊薯條，解鎖雞塊與漢堡，雇用吉祥物加速你的肥胖之路。一切只是娛樂？還是你已經身陷現代社會對「消費」的崇拜？這不只是一款遊戲，是一面諷刺的鏡子。\n\nA Clicker Game of Calories, Cravings & Capitalism.\nIn this meme-style incremental game, you don’t earn gold—you hoard calories. Click falling fries, unlock nuggets and burgers, and hire mascots to boost your consumption. Satire? Simulation? Or simply addictive fun in the face of our modern worship of consumer culture?",
+    "website": "https://github.com/homershie/weight_of_wealth",
+    "image": "/assets/imgs/works/work_0088.png",
+    "mainImage": "/assets/imgs/works/work_0088.png",
+    "gallery": [],
+    "category": ["網頁設計", "UI/UX"],
+    "client": "N/A",
+    "date": "2025-5-22",
+    "type": "image"
+  },
+  {
+    "id": 89,
+    "title": "吃我壓路機！－無限 ORA ORA / Road Roller Da ∞ ORAORA INFINITY",
+    "description": "承太郎 vs 迪奧：用拳頭對抗從天而降的壓路機！\n改編自經典動漫場景的防守型遊戲，玩家需操控承太郎的拳頭，擊退不斷飛來的壓路機。打擊節奏越快，分數越高。DIO 的怒火如潮水湧來，你是否能撐到最後？\n\nDefend with Your Fist: Jotaro vs DIO in a Roadroller Showdown!\nInspired by the iconic anime moment, this defense-style mini game pits you as Jotaro, fending off Dio’s endless barrage of falling road rollers. Punch fast, survive long, and rack up your score as the chaos intensifies. Simple to play, hard to master—pure ORA ORA fury.",
+    "website": "https://github.com/homershie/road_roller_da",
+    "image": "/assets/imgs/works/work_0089.png",
+    "mainImage": "/assets/imgs/works/work_0089.png",
+    "gallery": [],
+    "category": ["網頁設計", "UI/UX"],
+    "client": "N/A",
+    "date": "2025-5-27",
+    "type": "image"
   }
 ]
