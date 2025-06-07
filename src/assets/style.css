@@ -3715,8 +3715,8 @@ body.loaded {
   opacity: 1;
 }
 
-.portfolio .item:hover .cont .tag {
-  background: var(--maincolor);
+.portfolio .item .cont .tag:hover {
+  background: var(--maincolor); /* 單個標籤 hover 時變色 */
   color: #1d1d1d;
 }
 

@@ -18,7 +18,7 @@ export function usePortfolio() {
         throw new Error('載入作品資料失敗! status: ${response.status}')
       }
       const data = await response.json()
-      portfolioData.value = data.works
+      portfolioData.value = data
     } catch (err) {
       error.value = err.message
       console.error('載入作品資料錯誤:', err)
