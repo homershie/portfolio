@@ -8,7 +8,7 @@
             <div class="col-lg-8 text-center">
               <div class="d-inline-block">
                 <div class="sub-title-icon d-flex align-items-center">
-                  <span class="icon fas fa-bell"></span>
+                  <font-awesome-icon :icon="['fas', 'bell']" class="icon" />
                   <h6>我的服務</h6>
                 </div>
               </div>
@@ -27,7 +27,9 @@
                     </span>
                   </div>
                   <div>
-                    <span class="opacity-7 fz-13 mb-5">20+ 專案</span>
+                    <span class="opacity-7 fz-13 mb-5"
+                      >{{ getProjectCount('平面設計') }}+ 專案</span
+                    >
                     <h5 class="fz-20">平面設計</h5>
                   </div>
                 </div>
@@ -47,7 +49,7 @@
                     </span>
                   </div>
                   <div>
-                    <span class="opacity-7 fz-13 mb-5">15+ 專案</span>
+                    <span class="opacity-7 fz-13 mb-5">{{ getProjectCount('動畫') }}+ 專案</span>
                     <h5 class="fz-20">動態設計</h5>
                   </div>
                 </div>
@@ -67,7 +69,7 @@
                     </span>
                   </div>
                   <div>
-                    <span class="opacity-7 fz-13 mb-5">25+ 專案</span>
+                    <span class="opacity-7 fz-13 mb-5">{{ getProjectCount('插畫') }}+ 專案</span>
                     <h5 class="fz-20">插畫創作</h5>
                   </div>
                 </div>
@@ -87,7 +89,7 @@
                     </span>
                   </div>
                   <div>
-                    <span class="opacity-7 fz-13 mb-5">8+ 專案</span>
+                    <span class="opacity-7 fz-13 mb-5">{{ getProjectCount('3D') }}+ 專案</span>
                     <h5 class="fz-20">3D</h5>
                   </div>
                 </div>
@@ -107,7 +109,9 @@
                     </span>
                   </div>
                   <div>
-                    <span class="opacity-7 fz-13 mb-5">12+ 專案</span>
+                    <span class="opacity-7 fz-13 mb-5"
+                      >{{ getProjectCount('品牌設計') }}+ 專案</span
+                    >
                     <h5 class="fz-20">品牌設計</h5>
                   </div>
                 </div>
@@ -128,7 +132,9 @@
                     </span>
                   </div>
                   <div>
-                    <span class="opacity-7 fz-13 mb-5">10+ 專案</span>
+                    <span class="opacity-7 fz-13 mb-5"
+                      >{{ getProjectCount('網頁設計') }}+ 專案</span
+                    >
                     <h5 class="fz-20">網頁前端設計</h5>
                   </div>
                 </div>
@@ -152,7 +158,7 @@
             <div class="col-lg-8 text-center">
               <div class="d-inline-block">
                 <div class="sub-title-icon d-flex align-items-center">
-                  <span class="icon pe-7s-rocket"></span>
+                  <font-awesome-icon :icon="['fas', 'sticky-note']" class="icon" />
                   <h6>合作方案</h6>
                 </div>
               </div>
@@ -249,7 +255,7 @@
       <div class="container with-pad">
         <div class="text-center">
           <h6>
-            超過 <span class="main-color">{{ projectCount }}+ 專案</span> 的成功合作經驗
+            超過 <span class="main-color">{{ totalProjectCount }}+ 專案</span> 的成功合作經驗
           </h6>
         </div>
         <div class="row">
@@ -273,8 +279,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-const projectCount = ref(0) // 初始化專案數量
+import { ref, onMounted, computed } from 'vue'
+
+const portfolioData = ref([])
+
+// 計算總專案數量
+const totalProjectCount = computed(() => portfolioData.value.length)
+
+// 根據類別計算專案數量
+const getProjectCount = (targetCategory) => {
+  if (!portfolioData.value.length) return 0
+
+  return portfolioData.value.filter((project) => {
+    if (Array.isArray(project.category)) {
+      return project.category.includes(targetCategory)
+    }
+    return project.category === targetCategory
+  }).length
+}
 
 function scrollToContact() {
   // 這裡可以添加滾動到聯絡表單的邏輯
@@ -284,9 +306,9 @@ function scrollToContact() {
 
 onMounted(async () => {
   try {
-    const response = await fetch('/data/portfolio.json') // 載入 portfolio.json
+    const response = await fetch('/data/portfolio.json')
     const data = await response.json()
-    projectCount.value = data.length // 計算物件數量
+    portfolioData.value = data
   } catch (error) {
     console.error('載入 portfolio.json 時發生錯誤:', error)
   }

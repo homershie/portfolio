@@ -40,6 +40,7 @@
 import { computed, onMounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Masonry from 'masonry-layout'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -89,7 +90,7 @@ onMounted(() => {
     },
     {
       threshold: 0.1,
-      rootMargin: '0px 0px -15% 0px', // 相當於 start: 'top 85%'
+      rootMargin: '0px 0px -15% 0px',
     },
   )
 
@@ -98,15 +99,16 @@ onMounted(() => {
     observer.observe(item)
   })
 
-  // 確保 Isotope 正確初始化
+  // 確保 Masonry 正確初始化
   setTimeout(() => {
     const container = document.querySelector('.gallery')
     if (container) {
-      const iso = new Isotope(container, {
+      const masonry = new Masonry(container, {
         itemSelector: '.items',
-        layoutMode: 'masonry',
+        columnWidth: '.items',
+        percentPosition: true,
       })
-      iso.layout() // 強制重新布局
+      masonry.layout() // 強制重新布局
     }
   }, 100)
 })

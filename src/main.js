@@ -11,14 +11,40 @@ import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+// 從 free-solid-svg-icons 引入圖標
+import {
+  faDumbbell,
+  faFileAlt,
+  faBriefcase,
+  faLightbulb,
+  faBell,
+  faStickyNote,
+  faMapMarkerAlt,
+} from '@fortawesome/free-solid-svg-icons'
 // 從 free-regular-svg-icons 引入圖標
 import { faEnvelope, faMap, faUser, faComments } from '@fortawesome/free-regular-svg-icons'
 
 // 引入品牌圖標
-import { faInstagram, faPinterest, faMedium, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faPinterest, faMedium, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 // 將圖標添加到庫中
-library.add(faEnvelope, faMap, faUser, faComments, faInstagram, faPinterest, faMedium, faLinkedin)
+library.add(
+  faEnvelope,
+  faMap,
+  faUser,
+  faComments,
+  faInstagram,
+  faPinterest,
+  faMedium,
+  faGithub,
+  faDumbbell,
+  faFileAlt,
+  faBriefcase,
+  faLightbulb,
+  faBell,
+  faStickyNote,
+  faMapMarkerAlt,
+)
 
 const app = createApp(App)
 

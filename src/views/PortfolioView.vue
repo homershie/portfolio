@@ -35,11 +35,12 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import PortfolioList from '@/components/PortfolioList.vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { usePortfolio } from '@/composables/usePortfolio.js'
+import Masonry from 'masonry-layout'
 
 const router = useRouter()
 const { portfolioData, loading, error, loadPortfolio } = usePortfolio()
@@ -49,8 +50,38 @@ const handleViewDetails = (work) => {
   router.push(`/project/${work.id}`)
 }
 
+// 瀑布流布局重新計算
+const recalculateMasonryLayout = () => {
+  nextTick(() => {
+    const grid = document.querySelector('.portfolio-list')
+    if (grid) {
+      const masonry = new Masonry(grid, {
+        itemSelector: '.portfolio-item',
+        columnWidth: '.portfolio-item',
+        percentPosition: true,
+      })
+      masonry.layout()
+    }
+  })
+}
+
+// 監聽圖片載入完成
+const monitorImageLoad = () => {
+  const images = document.querySelectorAll('.portfolio-item img')
+  let loadedCount = 0
+  images.forEach((img) => {
+    img.onload = () => {
+      loadedCount++
+      if (loadedCount === images.length) {
+        recalculateMasonryLayout()
+      }
+    }
+  })
+}
+
 // 載入資料
 onMounted(() => {
   loadPortfolio()
+  monitorImageLoad()
 })
 </script>

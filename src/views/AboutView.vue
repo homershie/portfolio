@@ -115,10 +115,10 @@
     <section class="skills section-padding pt-0">
       <div class="container with-pad">
         <div class="sec-head mb-80">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="sub-title-icon d-flex align-items-center">
-                <span class="icon pe-7s-gym"></span>
+          <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+              <div class="sub-title-icon d-flex align-items-center mx-auto">
+                <font-awesome-icon :icon="['fas', 'dumbbell']" class="icon" />
                 <h6>我的技能</h6>
               </div>
               <h3>優勢</h3>
@@ -161,7 +161,7 @@
             <div class="col-lg-6 text-center">
               <div class="d-inline-block">
                 <div class="sub-title-icon d-flex align-items-center">
-                  <span class="icon pe-7s-note2"></span>
+                  <font-awesome-icon :icon="['fas', 'file-alt']" class="icon" />
                   <h6>我的簡歷</h6>
                 </div>
               </div>
