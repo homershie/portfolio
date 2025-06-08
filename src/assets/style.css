@@ -1535,6 +1535,7 @@ body.loaded {
 .navbar .navbar-nav .nav-link .rolling-text {
   height: 30px;
   line-height: 30px;
+  vertical-align: middle;
 }
 
 .navbar .navbar-nav .nav-link .block:last-of-type {

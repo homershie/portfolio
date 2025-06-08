@@ -38,16 +38,19 @@ const preloadResources = async () => {
   <div id="app">
     <!-- 全局 Loading -->
     <LoadingSpinner v-if="loading" />
-    <!-- Navigation -->
-    <AppNavbar />
 
-    <!-- Main Content -->
-    <main>
-      <RouterView />
-    </main>
+    <template v-else>
+      <!-- Navigation -->
+      <AppNavbar />
 
-    <!-- Footer -->
-    <AppFooter />
+      <!-- Main Content -->
+      <main>
+        <RouterView />
+      </main>
+
+      <!-- Footer -->
+      <AppFooter />
+    </template>
   </div>
 </template>
 

@@ -1,141 +1,139 @@
 <template>
-  <main class="pt-80">
-    <!-- ==================== Start Contact ==================== -->
-    <section class="contact section-padding">
-      <div class="container">
-        <div class="sec-head mb-80">
-          <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-              <div class="d-inline-block">
-                <div class="sub-title-icon d-flex align-items-center">
-                  <span class="icon fas fa-map-marker-alt"></span>
-                  <h6>聯絡我</h6>
-                </div>
-              </div>
-              <h3>如有任何問題，請隨時與我聯繫。</h3>
-            </div>
-          </div>
-        </div>
+  <!-- ==================== Start Contact ==================== -->
+  <section class="contact section-padding">
+    <div class="container">
+      <div class="sec-head mb-80">
         <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="google-map mb-80">
-              <iframe
-                id="gmap_canvas"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.7907963814307!2d121.46259308881785!3d25.01432952508229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a8196a224e67%3A0xec9f88ff96729962!2zMjIw5paw5YyX5biC5p2_5qmL5Y2A57ij5rCR5aSn6YGT5LqM5q61N-iVn-adv-api-i7iuermQ!5e0!3m2!1szh-TW!2stw!4v1722060602168!5m2!1szh-TW!2stw"
-                width="100%"
-                height="400"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              >
-              </iframe>
-            </div>
-          </div>
-          <div class="col-lg-5 valign">
-            <div class="info full-width md-mb80">
-              <div class="item mb-30 d-flex align-items-center">
-                <div class="mr-15">
-                  <font-awesome-icon :icon="['far', 'envelope']" class="icon main-color" />
-                </div>
-                <div class="mr-10">
-                  <h6 class="opacity-7">Email</h6>
-                </div>
-                <div class="ml-auto">
-                  <h4>
-                    <a href="mailto:homerxworkshop@gmail.com">homerxworkshop@gmail.com</a>
-                  </h4>
-                </div>
-              </div>
-              <div class="item d-flex align-items-center">
-                <div class="mr-15">
-                  <font-awesome-icon :icon="['far', 'map']" class="icon main-color" />
-                </div>
-                <div class="mr-10">
-                  <h6 class="opacity-7">Address</h6>
-                </div>
-                <div class="ml-auto">
-                  <h4>新北市板橋區，台灣</h4>
-                </div>
+          <div class="col-lg-8 text-center">
+            <div class="d-inline-block">
+              <div class="sub-title-icon d-flex align-items-center">
+                <span class="icon fas fa-map-marker-alt"></span>
+                <h6>聯絡我</h6>
               </div>
             </div>
-          </div>
-          <div class="col-lg-7 valign">
-            <div class="full-width">
-              <form @submit.prevent="submitForm" ref="contactForm">
-                <div class="messages" v-if="formMessage">
-                  <div :class="messageClass">{{ formMessage }}</div>
-                </div>
-
-                <div class="controls row">
-                  <div class="col-lg-6">
-                    <div class="form-group mb-30">
-                      <label>你的名字 *</label>
-                      <input
-                        v-model="form.name"
-                        type="text"
-                        name="name"
-                        required
-                        :disabled="isSubmitting"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group mb-30">
-                      <label>你的電子信箱 *</label>
-                      <input
-                        v-model="form.email"
-                        type="email"
-                        name="email"
-                        required
-                        :disabled="isSubmitting"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="col-12">
-                    <div class="form-group mb-30">
-                      <label>主旨</label>
-                      <input
-                        v-model="form.subject"
-                        type="text"
-                        name="subject"
-                        :disabled="isSubmitting"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label>你的訊息 *</label>
-                      <textarea
-                        v-model="form.message"
-                        name="message"
-                        rows="6"
-                        required
-                        :disabled="isSubmitting"
-                        placeholder="請詳細描述您的需求、預算範圍、專案時程等資訊..."
-                      ></textarea>
-                    </div>
-                    <div class="mt-30">
-                      <button type="submit" :disabled="isSubmitting" class="submit-btn">
-                        <span class="text" v-if="!isSubmitting">傳送訊息</span>
-                        <span class="text" v-else>
-                          <i class="fas fa-spinner fa-spin"></i> 傳送中...
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
+            <h3>如有任何問題，請隨時與我聯繫。</h3>
           </div>
         </div>
       </div>
-    </section>
-    <!-- ==================== End Contact ==================== -->
-  </main>
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="google-map mb-80">
+            <iframe
+              id="gmap_canvas"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.7907963814307!2d121.46259308881785!3d25.01432952508229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a8196a224e67%3A0xec9f88ff96729962!2zMjIw5paw5YyX5biC5p2_5qmL5Y2A57ij5rCR5aSn6YGT5LqM5q61N-iVn-adv-api-i7iuermQ!5e0!3m2!1szh-TW!2stw!4v1722060602168!5m2!1szh-TW!2stw"
+              width="100%"
+              height="400"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+        <div class="col-lg-5 valign">
+          <div class="info full-width md-mb80">
+            <div class="item mb-30 d-flex align-items-center">
+              <div class="mr-15">
+                <font-awesome-icon :icon="['far', 'envelope']" class="icon main-color" />
+              </div>
+              <div class="mr-10">
+                <h6 class="opacity-7">Email</h6>
+              </div>
+              <div class="ml-auto">
+                <h4>
+                  <a href="mailto:homerxworkshop@gmail.com">homerxworkshop@gmail.com</a>
+                </h4>
+              </div>
+            </div>
+            <div class="item d-flex align-items-center">
+              <div class="mr-15">
+                <font-awesome-icon :icon="['far', 'map']" class="icon main-color" />
+              </div>
+              <div class="mr-10">
+                <h6 class="opacity-7">Address</h6>
+              </div>
+              <div class="ml-auto">
+                <h4>新北市板橋區，台灣</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 valign">
+          <div class="full-width">
+            <form @submit.prevent="submitForm" ref="contactForm">
+              <div class="messages" v-if="formMessage">
+                <div :class="messageClass">{{ formMessage }}</div>
+              </div>
+
+              <div class="controls row">
+                <div class="col-lg-6">
+                  <div class="form-group mb-30">
+                    <label>你的名字 *</label>
+                    <input
+                      v-model="form.name"
+                      type="text"
+                      name="name"
+                      required
+                      :disabled="isSubmitting"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group mb-30">
+                    <label>你的電子信箱 *</label>
+                    <input
+                      v-model="form.email"
+                      type="email"
+                      name="email"
+                      required
+                      :disabled="isSubmitting"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group mb-30">
+                    <label>主旨</label>
+                    <input
+                      v-model="form.subject"
+                      type="text"
+                      name="subject"
+                      :disabled="isSubmitting"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>你的訊息 *</label>
+                    <textarea
+                      v-model="form.message"
+                      name="message"
+                      rows="6"
+                      required
+                      :disabled="isSubmitting"
+                      placeholder="請詳細描述您的需求、預算範圍、專案時程等資訊..."
+                    ></textarea>
+                  </div>
+                  <div class="mt-30">
+                    <button type="submit" :disabled="isSubmitting" class="submit-btn">
+                      <span class="text" v-if="!isSubmitting">傳送訊息</span>
+                      <span class="text" v-else>
+                        <i class="fas fa-spinner fa-spin"></i> 傳送中...
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==================== End Contact ==================== -->
 </template>
 
 <script setup>

@@ -1,149 +1,152 @@
 <template>
-  <main class="pt-80">
-    <!-- ==================== Start Blogs ==================== -->
-    <section class="blog section-padding">
-      <div class="container with-pad">
-        <div class="sec-head mb-80">
-          <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-              <div class="d-inline-block">
-                <div class="sub-title-icon d-flex align-items-center">
-                  <span class="icon fas fa-sticky-note"></span>
-                  <h6>部落格</h6>
-                </div>
-              </div>
-              <h3>開啟你的視界</h3>
-            </div>
-          </div>
-        </div>
-        <div class="row lg-marg justify-content-center">
-          <div class="col-lg-7">
-            <div class="md-mb80">
-              <div
-                v-for="post in filteredPosts"
-                :key="post.id"
-                class="item pb-50 mb-50 bord-thin-bottom blog-post"
-                :data-category="post.category"
-              >
-                <div class="img">
-                  <img :src="post.image" :alt="post.title" />
-                </div>
-                <div class="cont mt-30">
-                  <span class="date mb-10">{{ post.date }}</span>
-                  <h4 class="mb-15 post-title">
-                    <a href="#0" @click.prevent="openBlogPost(post)">
-                      {{ post.title }}
-                    </a>
-                  </h4>
-                  <p>{{ post.excerpt }}</p>
-                  <a href="#0" @click.prevent="openBlogPost(post)" class="mt-15 read-more">
-                    閱讀更多 <i class="fas fa-arrow-right ml-10"></i>
-                  </a>
-                </div>
+  <!-- ==================== Start Blogs ==================== -->
+  <section class="blog section-padding">
+    <div class="container with-pad">
+      <div class="sec-head mb-80">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <div class="d-inline-block">
+              <div class="sub-title-icon d-flex align-items-center">
+                <span class="icon fas fa-sticky-note"></span>
+                <h6>部落格</h6>
               </div>
             </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="sidebar">
-              <div class="search-box">
-                <input
-                  type="text"
-                  v-model="searchQuery"
-                  placeholder="搜尋文章"
-                  @input="filterPosts"
-                />
-                <span class="icon pe-7s-search"></span>
-              </div>
-              <div class="widget catogry">
-                <h6 class="title-widget">分類</h6>
-                <ul class="rest">
-                  <li>
-                    <span>
-                      <a href="#0" @click.prevent="filterByCategory('all')"> 全部文章 </a>
-                    </span>
-                    <span class="ml-auto">{{ allPosts.length }}</span>
-                  </li>
-                  <li>
-                    <span>
-                      <a href="#0" @click.prevent="filterByCategory('GraphicStyle')">
-                        視覺風格大全
-                      </a>
-                    </span>
-                    <span class="ml-auto">{{ getPostCountByCategory('GraphicStyle') }}</span>
-                  </li>
-                  <li>
-                    <span>
-                      <a href="#0" @click.prevent="filterByCategory('WorldVision')"> 世界視界 </a>
-                    </span>
-                    <span class="ml-auto">{{ getPostCountByCategory('WorldVision') }}</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="widget last-post-thum">
-                <h6 class="title-widget">最新文章</h6>
-                <div v-for="post in latestPosts" :key="post.id" class="item">
-                  <div class="valign">
-                    <div class="img">
-                      <a href="#0" @click.prevent="openBlogPost(post)">
-                        <img :src="post.thumbnail" :alt="post.title" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="cont">
-                    <h6>
-                      <a href="#0" @click.prevent="openBlogPost(post)">
-                        {{ post.title }}
-                      </a>
-                    </h6>
-                    <span>
-                      <a href="#0" @click.prevent="openBlogPost(post)">
-                        {{ post.date }}
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <h3>開啟你的視界</h3>
           </div>
         </div>
       </div>
-    </section>
-    <!-- ==================== End Blogs ==================== -->
+      <div class="row lg-marg justify-content-center">
+        <div class="col-lg-7">
+          <div class="md-mb80">
+            <div
+              v-for="post in filteredPosts"
+              :key="post.id"
+              class="item pb-50 mb-50 bord-thin-bottom blog-post"
+              :data-category="post.category"
+            >
+              <div class="img">
+                <img :src="post.image" :alt="post.title" />
+              </div>
+              <div class="cont mt-30">
+                <span class="date mb-10">{{ toLocalString(post.date) }}</span>
+                <h4 class="mb-15 post-title">
+                  <router-link :to="`/article/${post.id}`">
+                    {{ post.title }}
+                  </router-link>
+                </h4>
+                <p>{{ post.excerpt }}</p>
+                <router-link :to="`/article/${post.id}`" class="mt-15 read-more">
+                  閱讀更多 <i class="fas fa-arrow-right ml-10"></i>
+                </router-link>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <!-- Blog Post Modal -->
-    <div v-if="selectedPost" class="blog-modal-overlay" @click="closeBlogPost">
-      <div class="blog-modal-content" @click.stop>
-        <button class="close-btn" @click="closeBlogPost">&times;</button>
-        <div class="blog-post-detail">
-          <img :src="selectedPost.image" :alt="selectedPost.title" class="featured-image" />
-          <div class="post-content">
-            <span class="date">{{ selectedPost.date }}</span>
-            <h2>{{ selectedPost.title }}</h2>
-            <div class="category-tag">{{ selectedPost.categoryName }}</div>
-            <div class="content" v-html="selectedPost.content"></div>
-            <div class="post-footer">
-              <p>想了解更多設計趨勢和視覺風格？</p>
-              <a href="https://medium.com/homer-create" target="_blank" class="medium-link">
-                在 Medium 上關注我 <i class="fab fa-medium"></i>
-              </a>
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <div class="search-box">
+              <input
+                type="text"
+                v-model="searchQuery"
+                placeholder="搜尋文章"
+                @input="filterPosts"
+              />
+              <span class="icon pe-7s-search"></span>
+            </div>
+            <div class="widget catogry">
+              <h6 class="title-widget">分類</h6>
+              <ul class="rest">
+                <li>
+                  <span>
+                    <a href="#0" @click.prevent="filterByCategory('all')"> 全部文章 </a>
+                  </span>
+                  <span class="ml-auto">{{ allPosts.length }}</span>
+                </li>
+                <li>
+                  <span>
+                    <a href="#0" @click.prevent="filterByCategory('GraphicStyle')">
+                      視覺風格大全
+                    </a>
+                  </span>
+                  <span class="ml-auto">{{ getPostCountByCategory('GraphicStyle') }}</span>
+                </li>
+                <li>
+                  <span>
+                    <a href="#0" @click.prevent="filterByCategory('WorldVision')"> 世界視界 </a>
+                  </span>
+                  <span class="ml-auto">{{ getPostCountByCategory('WorldVision') }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="widget last-post-thum">
+              <h6 class="title-widget">最新文章</h6>
+              <div v-for="post in latestPosts" :key="post.id" class="item">
+                <div class="valign">
+                  <div class="img">
+                    <a href="#0" @click.prevent="openBlogPost(post)">
+                      <img :src="post.thumbnail" :alt="post.title" />
+                    </a>
+                  </div>
+                </div>
+                <div class="cont">
+                  <h6>
+                    <a href="#0" @click.prevent="openBlogPost(post)">
+                      {{ post.title }}
+                    </a>
+                  </h6>
+                  <span>
+                    <a href="#0" @click.prevent="openBlogPost(post)">
+                      {{ toLocalString(post.date) }}
+                    </a>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </section>
+  <!-- ==================== End Blogs ==================== -->
+
+  <!-- Blog Post Modal -->
+  <div v-if="selectedPost" class="blog-modal-overlay" @click="closeBlogPost">
+    <div class="blog-modal-content" @click.stop>
+      <button class="close-btn" @click="closeBlogPost">&times;</button>
+      <div class="blog-post-detail">
+        <img :src="selectedPost.image" :alt="selectedPost.title" class="featured-image" />
+        <div class="post-content">
+          <span class="date">{{ selectedPost.date }}</span>
+          <h2>{{ selectedPost.title }}</h2>
+          <div class="category-tag">{{ selectedPost.categoryName }}</div>
+          <div class="content" v-html="selectedPost.content"></div>
+          <div class="post-footer">
+            <p>想了解更多設計趨勢和視覺風格？</p>
+            <a href="https://medium.com/homer-create" target="_blank" class="medium-link">
+              在 Medium 上關注我 <i class="fab fa-medium"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
-import { blogPosts as blogData } from '@/data/portfolioData.js'
+import { articles } from '@/data/articleData.js'
 
 const searchQuery = ref('')
 const selectedCategory = ref('all')
 const selectedPost = ref(null)
 
-const allPosts = ref(blogData)
+const toLocalString = (isoDate) => {
+  return new Date(isoDate).toLocaleDateString()
+}
+
+// 將 articles 轉換為陣列格式
+const allPosts = ref(Object.values(articles))
 
 const filteredPosts = computed(() => {
   let posts = allPosts.value
@@ -236,18 +239,14 @@ function closeBlogPost() {
 
 .catogry ul li {
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #666;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.catogry ul li:last-child {
-  border-bottom: none;
-}
-
 .catogry ul li a {
-  color: #666;
+  color: #ccc;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -288,7 +287,7 @@ function closeBlogPost() {
 }
 
 .last-post-thum .cont h6 a {
-  color: #333;
+  color: #ccc;
   text-decoration: none;
 }
 

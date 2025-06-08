@@ -7,18 +7,19 @@
             <!-- Logo -->
             <router-link class="logo icon-img-120" to="/">
               <img
-                src="@/assets/imgs/logo-light.png"
+                src="/assets/imgs/logo-light.png"
                 alt="荷馬桑 Homer Shie - 視覺設計師標誌"
                 loading="eager"
               />
             </router-link>
           </div>
         </div>
+
         <div class="col-lg-6 order3">
-          <div class="bg">
+          <div class="bg" ref="bgRef" :class="{ open: isMenuOpen }">
             <!-- navbar links -->
             <div class="full-width">
-              <ul class="navbar-nav">
+              <ul class="navbar-nav text-center">
                 <li class="nav-item">
                   <router-link class="nav-link" to="/">
                     <span class="rolling-text">首頁</span>
@@ -90,7 +91,7 @@
             <button
               class="navbar-toggler"
               type="button"
-              @click="toggleMenu"
+              @click.stop="toggleMenu"
               :class="{ active: isMenuOpen }"
             >
               <span class="icon-bar"></span>
@@ -102,44 +103,88 @@
       </div>
     </div>
   </nav>
+
+  <teleport to="body">
+    <div class="overlay" v-show="isMenuOpen && !isDesktop" @click.self="closeMenu"></div>
+  </teleport>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
+import gsap from 'gsap'
 
+const route = useRoute()
 const isMenuOpen = ref(false)
+const isDesktop = ref(window.innerWidth > 991)
+const bgRef = ref(null)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
+
+const handleResize = () => {
+  isDesktop.value = window.innerWidth > 991
+  if (isDesktop.value) isMenuOpen.value = false
+}
 
 onMounted(() => {
-  document.querySelectorAll('.rolling-text').forEach((element) => {
-    if (element.querySelector('.letter')) return
-    const innerText = element.innerText
-    element.innerHTML = ''
-
-    const textContainer = document.createElement('div')
-    textContainer.classList.add('block')
-
-    for (const letter of innerText) {
-      const span = document.createElement('span')
-      span.innerText = letter.trim() === '' ? '\xa0' : letter
-      span.classList.add('letter')
-      textContainer.appendChild(span)
-    }
-
-    element.appendChild(textContainer)
-
-    element.addEventListener('mouseover', () => {
-      element.classList.remove('play')
-    })
-  })
+  window.addEventListener('resize', handleResize)
+  handleResize()
 })
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize)
+})
+
+// 當打開手機版選單時做 GSAP 動畫
+watch(isMenuOpen, async (open) => {
+  if (open && !isDesktop.value) {
+    await nextTick()
+    gsap.fromTo(
+      bgRef.value,
+      { y: -100, autoAlpha: 0, filter: 'blur(50px)' },
+      { y: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' },
+    )
+  }
+})
+
+// 路由變換自動收合
+watch(
+  () => route.path,
+  () => {
+    if (!isDesktop.value) isMenuOpen.value = false
+  },
+)
 </script>
 
 <style lang="scss" scoped>
+/* 遮罩層 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  height: 200vh;
+  z-index: 9;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.bg {
+  display: none;
+  @media (min-width: 992px) {
+    display: flex;
+  }
+  &.open {
+    display: flex;
+  }
+}
+
 .navbar {
+  position: relative;
+  z-index: 20;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -179,13 +224,13 @@ onMounted(() => {
 
     &.active {
       .icon-bar:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: rotate(45deg) translate(4px, 5px);
       }
       .icon-bar:nth-child(2) {
         opacity: 0;
       }
       .icon-bar:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
+        transform: rotate(-45deg) translate(4px, -5px);
       }
     }
   }
@@ -244,14 +289,19 @@ onMounted(() => {
     margin-top: 20px;
     border-radius: 10px;
     padding: 20px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
 
     .nav-item {
       margin: 10px 0;
-    }
 
-    .nav-link {
-      text-align: center;
-      padding: 10px 0;
+      .nav-link {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
     }
   }
 }
