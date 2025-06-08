@@ -24,9 +24,11 @@
               class="item pb-50 mb-50 bord-thin-bottom blog-post"
               :data-category="post.category"
             >
-              <div class="img">
-                <img :src="post.image" :alt="post.title" />
-              </div>
+              <router-link :to="`/article/${post.id}`">
+                <div class="img">
+                  <img :src="post.image" :alt="post.title" />
+                </div>
+              </router-link>
               <div class="cont mt-30">
                 <span class="date mb-10">{{ toLocalString(post.date) }}</span>
                 <h4 class="mb-15 post-title">
@@ -84,21 +86,21 @@
               <div v-for="post in latestPosts" :key="post.id" class="item">
                 <div class="valign">
                   <div class="img">
-                    <a href="#0" @click.prevent="openBlogPost(post)">
+                    <router-link :to="`/article/${post.id}`">
                       <img :src="post.thumbnail" :alt="post.title" />
-                    </a>
+                    </router-link>
                   </div>
                 </div>
                 <div class="cont">
                   <h6>
-                    <a href="#0" @click.prevent="openBlogPost(post)">
+                    <router-link :to="`/article/${post.id}`">
                       {{ post.title }}
-                    </a>
+                    </router-link>
                   </h6>
                   <span>
-                    <a href="#0" @click.prevent="openBlogPost(post)">
+                    <router-link :to="`/article/${post.id}`">
                       {{ toLocalString(post.date) }}
-                    </a>
+                    </router-link>
                   </span>
                 </div>
               </div>
@@ -109,28 +111,6 @@
     </div>
   </section>
   <!-- ==================== End Blogs ==================== -->
-
-  <!-- Blog Post Modal -->
-  <div v-if="selectedPost" class="blog-modal-overlay" @click="closeBlogPost">
-    <div class="blog-modal-content" @click.stop>
-      <button class="close-btn" @click="closeBlogPost">&times;</button>
-      <div class="blog-post-detail">
-        <img :src="selectedPost.image" :alt="selectedPost.title" class="featured-image" />
-        <div class="post-content">
-          <span class="date">{{ selectedPost.date }}</span>
-          <h2>{{ selectedPost.title }}</h2>
-          <div class="category-tag">{{ selectedPost.categoryName }}</div>
-          <div class="content" v-html="selectedPost.content"></div>
-          <div class="post-footer">
-            <p>想了解更多設計趨勢和視覺風格？</p>
-            <a href="https://medium.com/homer-create" target="_blank" class="medium-link">
-              在 Medium 上關注我 <i class="fab fa-medium"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script setup>
@@ -139,14 +119,13 @@ import { articles } from '@/data/articleData.js'
 
 const searchQuery = ref('')
 const selectedCategory = ref('all')
-const selectedPost = ref(null)
 
 const toLocalString = (isoDate) => {
   return new Date(isoDate).toLocaleDateString()
 }
 
 // 將 articles 轉換為陣列格式
-const allPosts = ref(Object.values(articles))
+const allPosts = ref(Object.values(articles).sort((a, b) => new Date(b.date) - new Date(a.date)))
 
 const filteredPosts = computed(() => {
   let posts = allPosts.value
@@ -163,10 +142,12 @@ const filteredPosts = computed(() => {
     )
   }
 
-  return posts
+  // 依照日期新到舊排序
+  return posts.sort((a, b) => new Date(b.date) - new Date(a.date))
 })
 
 const latestPosts = computed(() => {
+  // 取最新的三篇
   return allPosts.value.slice(0, 3)
 })
 
@@ -181,19 +162,12 @@ function filterByCategory(category) {
 function filterPosts() {
   // 搜尋功能通過 computed 自動觸發
 }
-
-function openBlogPost(post) {
-  selectedPost.value = post
-  document.body.style.overflow = 'hidden'
-}
-
-function closeBlogPost() {
-  selectedPost.value = null
-  document.body.style.overflow = 'auto'
-}
 </script>
 
 <style scoped>
+.blog a:hover {
+  text-decoration: underline;
+}
 .read-more {
   color: var(--maincolor);
   text-decoration: none;
@@ -201,8 +175,15 @@ function closeBlogPost() {
   transition: all 0.3s ease;
 }
 
-.read-more:hover {
-  text-decoration: underline;
+.read-more:hover ::after {
+  content: '';
+  display: block;
+  width: 88px;
+  height: 2px;
+  background-color: var(--maincolor);
+  transition: width 0.3s ease;
+  position: relative;
+  left: -70px;
 }
 
 .search-box {
@@ -261,7 +242,6 @@ function closeBlogPost() {
   padding-bottom: 20px;
   border-bottom: 1px solid #eee;
 }
-
 .last-post-thum .item:last-child {
   border-bottom: none;
 }
@@ -284,6 +264,9 @@ function closeBlogPost() {
   font-size: 14px;
   line-height: 1.4;
   margin-bottom: 5px;
+}
+.last-post-thum .cont a:hover {
+  text-decoration: underline;
 }
 
 .last-post-thum .cont h6 a {

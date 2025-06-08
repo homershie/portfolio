@@ -96,6 +96,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { articles } from '@/data/articleData.js'
 import { useHead } from '@vueuse/head'
+import { enableImageLightbox } from '@/composables/useLightBox.js'
 
 const route = useRoute()
 const router = useRouter()
@@ -179,6 +180,7 @@ watch(article, (a) => {
       { name: 'twitter:card', content: 'summary_large_image' },
     ],
   })
+  enableImageLightbox()
 })
 
 onMounted(() => {
@@ -214,17 +216,50 @@ article {
   h2 {
     font-size: 2rem;
     margin: 40px 0 20px 0;
+    color: var(--maincolor);
+  }
+  h3 {
+    font-size: 1.5rem;
+    margin: 40px 0 20px 0;
+    text-decoration: underline;
+    text-decoration-color: var(--maincolor);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
   }
   p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 10px;
+    font-weight: normal;
   }
   hr {
     margin-top: 40px;
     border: none;
     border-top: 1px solid #eee;
   }
+  ul {
+    padding-left: 20px;
+    margin: 40px 0;
+    li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      font-weight: normal;
+      line-height: 1.6;
+      &:before {
+        content: '•';
+        color: var(--maincolor);
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.cont .image-gallery .artist {
+  grid-column: 1 / -1;
+  justify-self: center;
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 0 auto;
 }
 
 .cont .image-gallery {
@@ -252,6 +287,7 @@ article {
     }
 
     figcaption {
+      margin: 0;
       opacity: 0;
       transform: translateY(10px);
       transition:
@@ -260,7 +296,7 @@ article {
       text-align: center;
       background: rgba(0, 0, 0, 0.8);
       color: #fff;
-      padding: 8px 0 4px 0;
+      padding: 16px 0 10px 0;
       border-radius: 0 0 5px 5px;
       font-size: 0.95em;
       position: absolute;
@@ -277,6 +313,10 @@ article {
       pointer-events: auto;
     }
   }
+}
+.cont .image-gallery-3 {
+  @extend .image-gallery;
+  grid-template-columns: repeat(3, 1fr); // 覆蓋欄數
 }
 
 .image-masonry {
@@ -304,6 +344,7 @@ article {
     }
 
     figcaption {
+      margin: 0;
       opacity: 0;
       transform: translateY(10px);
       transition:
@@ -338,6 +379,9 @@ article {
   .image-masonry {
     column-count: 2;
   }
+  .cont .image-gallery-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -345,12 +389,18 @@ article {
     h2 {
       font-size: 1.8rem;
     }
+    h3 {
+      font-size: 1.4rem;
+    }
     img {
       width: 100%;
     }
   }
   .image-masonry {
     column-count: 1;
+  }
+  .cont .image-gallery-3 {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 </style>
