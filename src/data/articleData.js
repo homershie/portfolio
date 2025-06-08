@@ -62,17 +62,18 @@ export const articles = {
 
   <!-- 圖庫展示 -->
   <div class="image-gallery">
-    <figure class="image">
-      <img
-        src="/assets/imgs/blog/Pop_Art/Campbells_Soup_Cans_MOMA_reduced_80%.jpg"
-        alt="Campbells Soup Cans by Andy Warhol"
-        loading="lazy"
-      />
+  <figure class="image">
+    <img
+      src="/assets/imgs/blog/Pop_Art/W1siZiIsIjMxODI0MiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA5MCAtcmVzaXplIDIwMDB4MjAwMFx1MDAzZSJdXQ.jpg"
+      alt="Campbells Soup Cans by Andy Warhol"
+      loading="lazy"
+    />
 
-      <figcaption>
-        《Campbells Soup Cans》 Andy Warhol, from
-        <a href="https://en.wikipedia.org/wiki/Campbell%27s_Soup_Cans" target="_blank">Wiki</a>
-      </figcaption>
+    <figcaption>
+      《Campbells Soup Cans》 Andy Warhol, from
+      <a href="https://en.wikipedia.org/wiki/Campbell%27s_Soup_Cans" target="_blank">Wiki</a>
+    </figcaption>
+  </figure>
     </figure>
     <figure class="image">
       <img src="/assets/imgs/blog/Pop_Art/file1.jpg" alt="Monroe in Warhol style" loading="lazy" />

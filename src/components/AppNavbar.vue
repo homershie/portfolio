@@ -105,7 +105,12 @@
   </nav>
 
   <teleport to="body">
-    <div class="overlay" v-show="isMenuOpen && !isDesktop" @click.self="closeMenu"></div>
+    <div
+      class="overlay"
+      v-show="isMenuOpen && !isDesktop"
+      @click.self="closeMenu"
+      style="z-index: 9999"
+    ></div>
   </teleport>
 </template>
 
