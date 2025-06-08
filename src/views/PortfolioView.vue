@@ -18,16 +18,8 @@
         </div>
       </div>
 
-      <!-- 載入中 -->
-      <LoadingSpinner v-if="!imagesLoaded || dataLoading" />
-
-      <!-- 錯誤訊息 -->
-      <div v-else-if="error" class="alert alert-danger text-center">
-        {{ error }}
-      </div>
-
       <!-- 作品列表 -->
-      <PortfolioList v-else :works="portfolioData" @view-details="handleViewDetails" />
+      <PortfolioList :works="portfolioData" @view-details="handleViewDetails" />
     </div>
   </section>
 </template>
@@ -36,12 +28,11 @@
 import { ref, onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import PortfolioList from '@/components/PortfolioList.vue'
-import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { usePortfolio } from '@/composables/usePortfolio.js'
 import Masonry from 'masonry-layout'
 
 const router = useRouter()
-const { portfolioData, loading: dataLoading, error } = usePortfolio()
+const { portfolioData } = usePortfolio()
 const imagesLoaded = ref(false)
 
 // 預載入單張圖片

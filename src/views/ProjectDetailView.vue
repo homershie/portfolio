@@ -69,7 +69,7 @@
           </div>
         </div>
       </div>
-      <loadingSpinner v-else class="text-center" />
+      <Preloader v-else />
     </div>
   </section>
 </template>
@@ -78,7 +78,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePortfolio } from '@/composables/usePortfolio.js'
-import LoadingSpinner from '@/components/LoadingSpinner.vue'
+import Preloader from '@/components/PreLoader.vue'
 
 const route = useRoute()
 const project = ref(null)

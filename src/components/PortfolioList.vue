@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, nextTick } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Masonry from 'masonry-layout'
@@ -62,54 +62,123 @@ const sortedWorks = computed(() => {
 })
 
 onMounted(() => {
-  const items = document.querySelectorAll('.items')
+  let masonryInstance = null
 
-  // 設定初始狀態
-  items.forEach((item) => {
-    gsap.set(item, { opacity: 0, y: 200, scale: 0.9 })
-  })
-
-  // 使用 Intersection Observer
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          gsap.to(entry.target, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: 'power2.out',
-            delay: index * 0.1,
-          })
-
-          // 動畫完成後停止觀察這個元素
-          observer.unobserve(entry.target)
-        }
-      })
-    },
-    {
-      threshold: 0.1,
-      rootMargin: '0px 0px -15% 0px',
-    },
-  )
-
-  // 開始觀察所有項目
-  items.forEach((item) => {
-    observer.observe(item)
-  })
-
-  // 確保 Masonry 正確初始化
-  setTimeout(() => {
+  // 等待 DOM 完全渲染
+  nextTick(() => {
     const container = document.querySelector('.gallery')
-    if (container) {
-      const masonry = new Masonry(container, {
+    const items = document.querySelectorAll('.items')
+
+    if (!container || items.length === 0) return
+
+    // 設定初始狀態（移除 scale 避免影響布局）
+    items.forEach((item) => {
+      gsap.set(item, { opacity: 0, y: 50 })
+    })
+
+    // 初始化 Masonry（等所有圖片載入完成）
+    const initMasonry = () => {
+      if (masonryInstance) {
+        masonryInstance.destroy()
+      }
+
+      masonryInstance = new Masonry(container, {
         itemSelector: '.items',
         columnWidth: '.items',
         percentPosition: true,
+        gutter: 0,
+        transitionDuration: 0, // 禁用 Masonry 內建動畫
       })
-      masonry.layout() // 強制重新布局
     }
-  }, 100)
+
+    // 等待所有圖片載入完成
+    const images = container.querySelectorAll('img')
+    let loadedCount = 0
+    const totalImages = images.length
+
+    const checkAllImagesLoaded = () => {
+      loadedCount++
+      if (loadedCount === totalImages) {
+        // 所有圖片載入完成後初始化 Masonry
+        setTimeout(() => {
+          initMasonry()
+          setupAnimations()
+        }, 100)
+      }
+    }
+
+    // 監聽圖片載入
+    if (totalImages === 0) {
+      // 沒有圖片時直接初始化
+      setTimeout(() => {
+        initMasonry()
+        setupAnimations()
+      }, 100)
+    } else {
+      images.forEach((img) => {
+        if (img.complete) {
+          checkAllImagesLoaded()
+        } else {
+          img.addEventListener('load', checkAllImagesLoaded)
+          img.addEventListener('error', checkAllImagesLoaded) // 即使載入失敗也要計算
+        }
+      })
+    }
+
+    // 設置動畫
+    const setupAnimations = () => {
+      // 使用 Intersection Observer 但不改變 scale
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              gsap.to(entry.target, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                onComplete: () => {
+                  // 動畫完成後重新布局 Masonry
+                  if (masonryInstance) {
+                    masonryInstance.layout()
+                  }
+                },
+              })
+
+              observer.unobserve(entry.target)
+            }
+          })
+        },
+        {
+          threshold: 0.1,
+          rootMargin: '0px 0px -10% 0px',
+        },
+      )
+
+      // 開始觀察所有項目
+      items.forEach((item) => {
+        observer.observe(item)
+      })
+    }
+
+    // 窗口大小改變時重新布局
+    const handleResize = () => {
+      if (masonryInstance) {
+        setTimeout(() => {
+          masonryInstance.layout()
+        }, 100)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    // 清理函數
+    return () => {
+      if (masonryInstance) {
+        masonryInstance.destroy()
+      }
+      window.removeEventListener('resize', handleResize)
+    }
+  })
 })
 </script>

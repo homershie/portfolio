@@ -1,56 +1,28 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { RouterView } from 'vue-router'
 import AppNavbar from '@/components/AppNavbar.vue'
 import AppFooter from '@/components/AppFooter.vue'
-import LoadingSpinner from '@/components/LoadingSpinner.vue'
+import PreLoader from '@/components/PreLoader.vue'
 
-const loading = ref(true)
-
-onMounted(async () => {
-  // 預載入資源
-  await preloadResources()
-  loading.value = false
-})
-
-// 預載入資源的方法
-const preloadResources = async () => {
-  const images = [
-    '/assets/imgs/header/profile.jpg',
-    '/assets/resume/Homer_Shie_Resume.pdf',
-    // 添加其他需要預載入的資源
-  ]
-
-  const promises = images.map((src) => {
-    return new Promise((resolve) => {
-      const img = new Image()
-      img.src = src
-      img.onload = resolve
-      img.onerror = resolve
-    })
-  })
-
-  await Promise.all(promises)
-}
+const showLoader = ref(true)
 </script>
 
 <template>
   <div id="app">
     <!-- 全局 Loading -->
-    <LoadingSpinner v-if="loading" />
+    <PreLoader @loaded="showLoader = false" />
 
-    <template v-else>
-      <!-- Navigation -->
-      <AppNavbar />
+    <!-- Navigation -->
+    <AppNavbar />
 
-      <!-- Main Content -->
-      <main>
-        <RouterView />
-      </main>
+    <!-- Main Content -->
+    <main>
+      <RouterView />
+    </main>
 
-      <!-- Footer -->
-      <AppFooter />
-    </template>
+    <!-- Footer -->
+    <AppFooter />
   </div>
 </template>
 
