@@ -92,14 +92,16 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { articles } from '@/data/articleData.js'
+import { preloadImages } from '@/composables/useImagePreloader.js'
 import { useHead } from '@vueuse/head'
 import { enableImageLightbox } from '@/composables/useLightBox.js'
 
 const route = useRoute()
 const router = useRouter()
+const imagesPreloaded = ref(false)
 
 const article = ref(null)
 const articleIds = Object.keys(articles)
@@ -180,6 +182,25 @@ watch(article, (a) => {
       { name: 'twitter:card', content: 'summary_large_image' },
     ],
   })
+  enableImageLightbox()
+})
+
+// 1. 監聽 article 變動
+watch(article, async (a) => {
+  if (!a) return
+
+  // 2. 等 v-html 渲染完
+  await nextTick()
+
+  // 3. 收集所有文章內圖片 URL
+  const urls = Array.from(document.querySelectorAll('.cont .image img')).map((img) => img.src)
+
+  // 4. 預載前 10 張
+  await preloadImages(urls)
+
+  imagesPreloaded.value = true
+
+  // 5. 圖片載完後才開 lightbox
   enableImageLightbox()
 })
 
