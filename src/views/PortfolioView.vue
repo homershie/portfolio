@@ -19,7 +19,7 @@
       </div>
 
       <!-- 載入中 -->
-      <LoadingSpinner v-if="loading" />
+      <LoadingSpinner v-if="!imagesLoaded || dataLoading" />
 
       <!-- 錯誤訊息 -->
       <div v-else-if="error" class="alert alert-danger text-center">
@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import PortfolioList from '@/components/PortfolioList.vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
@@ -41,7 +41,24 @@ import { usePortfolio } from '@/composables/usePortfolio.js'
 import Masonry from 'masonry-layout'
 
 const router = useRouter()
-const { portfolioData, loading, error } = usePortfolio()
+const { portfolioData, loading: dataLoading, error } = usePortfolio()
+const imagesLoaded = ref(false)
+
+// 預載入單張圖片
+function loadImage(src) {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.src = src
+    img.onload = resolve
+    img.onerror = resolve
+  })
+}
+
+// 預載入所有作品圖
+async function preloadAllImages() {
+  const urls = portfolioData.value.map((work) => work.image)
+  await Promise.all(urls.map((src) => loadImage(src)))
+}
 
 // 處理查看詳情
 const handleViewDetails = (work) => {
@@ -78,7 +95,9 @@ const monitorImageLoad = () => {
 }
 
 // 載入資料
-onMounted(() => {
+onMounted(async () => {
+  await preloadAllImages()
+  imagesLoaded.value = true
   monitorImageLoad()
 })
 </script>
