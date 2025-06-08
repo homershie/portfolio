@@ -41,7 +41,7 @@ import { usePortfolio } from '@/composables/usePortfolio.js'
 import Masonry from 'masonry-layout'
 
 const router = useRouter()
-const { portfolioData, loading, error, loadPortfolio } = usePortfolio()
+const { portfolioData, loading, error } = usePortfolio()
 
 // 處理查看詳情
 const handleViewDetails = (work) => {
@@ -79,7 +79,6 @@ const monitorImageLoad = () => {
 
 // 載入資料
 onMounted(() => {
-  loadPortfolio()
   monitorImageLoad()
 })
 </script>

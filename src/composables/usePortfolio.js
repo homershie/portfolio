@@ -1,31 +1,13 @@
 import { ref, computed } from 'vue'
+import { portfolio } from '@/data/portfolioData.js'
 
-const portfolioData = ref([])
+// 直接使用 portfolioData.js 的靜態資料
+const portfolioData = ref(portfolio)
 const loading = ref(false)
 const error = ref(null)
 
 export function usePortfolio() {
-  // 載入作品資料
-  const loadPortfolio = async () => {
-    if (portfolioData.value.length > 0) return // 避免重複載入
-
-    loading.value = true
-    error.value = null
-
-    try {
-      const response = await fetch('/data/portfolio.json')
-      if (!response.ok) {
-        throw new Error('載入作品資料失敗! status: ${response.status}')
-      }
-      const data = await response.json()
-      portfolioData.value = data
-    } catch (err) {
-      error.value = err.message
-      console.error('載入作品資料錯誤:', err)
-    } finally {
-      loading.value = false
-    }
-  }
+  // 不再需要 loadPortfolio，資料已靜態引入
 
   // 根據 ID 取得單一作品
   const getWorkById = (id) => {
@@ -35,20 +17,22 @@ export function usePortfolio() {
   // 根據類別篩選作品
   const getWorksByCategory = (category) => {
     if (!category || category === 'all') return portfolioData.value
-    return portfolioData.value.filter((work) => work.category === category)
+    // 支援多分類陣列
+    return portfolioData.value.filter((work) =>
+      Array.isArray(work.category) ? work.category.includes(category) : work.category === category,
+    )
   }
 
-  // 取得所有類別
+  // 取得所有類別（展平成單一陣列）
   const categories = computed(() => {
-    const cats = [...new Set(portfolioData.value.map((work) => work.category))]
-    return ['all', ...cats]
+    const cats = portfolioData.value.flatMap((work) => work.category || [])
+    return ['all', ...Array.from(new Set(cats))]
   })
 
   return {
     portfolioData: computed(() => portfolioData.value),
     loading: computed(() => loading.value),
     error: computed(() => error.value),
-    loadPortfolio,
     getWorkById,
     getWorksByCategory,
     categories,

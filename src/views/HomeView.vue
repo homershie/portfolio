@@ -230,7 +230,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { computed } from 'vue'
+import { portfolio } from '@/data/portfolioData.js'
 
 const experienceYear = computed(() => {
   const startYear = 2018 // 假設從2018年開始工作
@@ -238,17 +239,7 @@ const experienceYear = computed(() => {
   return currentYear - startYear
 })
 
-const projectCount = ref(0) // 初始化專案數量
-
-onMounted(async () => {
-  try {
-    const response = await fetch('/data/portfolio.json') // 載入 portfolio.json
-    const data = await response.json()
-    projectCount.value = data.length // 計算物件數量
-  } catch (error) {
-    console.error('載入 portfolio.json 時發生錯誤:', error)
-  }
-})
+const projectCount = computed(() => portfolio.length)
 </script>
 
 <style scoped>

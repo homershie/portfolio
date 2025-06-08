@@ -58,7 +58,9 @@
                   <li v-if="project.website">
                     <span class="sub-title"> <i class="fas fa-globe mr-10"></i> 連結 : </span>
                     <p>
-                      <a :href="project.website" target="_blank">{{ project.website }}</a>
+                      <a :href="project.website" target="_blank" class="break-link">{{
+                        project.website
+                      }}</a>
                     </p>
                   </li>
                 </ul>
@@ -80,7 +82,7 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
 const route = useRoute()
 const project = ref(null)
-const { loadPortfolio, getWorkById } = usePortfolio()
+const { getWorkById } = usePortfolio()
 
 // 格式化描述文字，將 \n 轉換為 <br>
 const formattedDescription = computed(() => {
@@ -108,8 +110,7 @@ const formatCategory = (categories) => {
   return categories
 }
 
-onMounted(async () => {
-  await loadPortfolio()
+onMounted(() => {
   const projectId = route.params.id
   project.value = getWorkById(projectId)
 
@@ -126,5 +127,9 @@ a {
 }
 a:hover {
   color: var(--maincolor);
+}
+.break-link {
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 </style>

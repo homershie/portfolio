@@ -271,9 +271,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, computed } from 'vue'
+import { portfolio } from '@/data/portfolioData.js'
 
-const portfolioData = ref([])
+const portfolioData = ref(portfolio)
 
 // 計算總專案數量
 const totalProjectCount = computed(() => portfolioData.value.length)
@@ -281,7 +282,6 @@ const totalProjectCount = computed(() => portfolioData.value.length)
 // 根據類別計算專案數量
 const getProjectCount = (targetCategory) => {
   if (!portfolioData.value.length) return 0
-
   return portfolioData.value.filter((project) => {
     if (Array.isArray(project.category)) {
       return project.category.includes(targetCategory)
@@ -291,18 +291,6 @@ const getProjectCount = (targetCategory) => {
 }
 
 function scrollToContact() {
-  // 這裡可以添加滾動到聯絡表單的邏輯
-  // 或者導航到聯絡頁面
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
 }
-
-onMounted(async () => {
-  try {
-    const response = await fetch('/data/portfolio.json')
-    const data = await response.json()
-    portfolioData.value = data
-  } catch (error) {
-    console.error('載入 portfolio.json 時發生錯誤:', error)
-  }
-})
 </script>
