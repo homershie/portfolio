@@ -61,8 +61,8 @@
         </div>
         <div class="col-lg-7 valign">
           <div class="full-width">
-            <form @submit.prevent="submitForm" ref="contactForm">
-              <div class="messages" v-if="formMessage">
+            <form ref="contactForm" @submit.prevent="submitForm">
+              <div v-if="formMessage" class="messages">
                 <div :class="messageClass">{{ formMessage }}</div>
               </div>
 
@@ -119,8 +119,8 @@
                   </div>
                   <div class="mt-30">
                     <button type="submit" :disabled="isSubmitting" class="submit-btn">
-                      <span class="text" v-if="!isSubmitting">傳送訊息</span>
-                      <span class="text" v-else>
+                      <span v-if="!isSubmitting" class="text">傳送訊息</span>
+                      <span v-else class="text">
                         <i class="fas fa-spinner fa-spin"></i> 傳送中...
                       </span>
                     </button>
@@ -156,14 +156,14 @@ async function submitForm() {
 
   try {
     // 模擬表單提交（實際應用中需要連接到後端API）
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    await new Promise(resolve => setTimeout(resolve, 2000))
 
     // 模擬成功響應
     formMessage.value = '訊息已成功發送！我會盡快回復您。'
     messageClass.value = 'alert alert-success'
 
     // 重置表單
-    Object.keys(form).forEach((key) => {
+    Object.keys(form).forEach(key => {
       form[key] = ''
     })
   } catch (error) {

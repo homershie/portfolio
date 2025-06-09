@@ -19,7 +19,7 @@
       </div>
 
       <!-- 作品列表 -->
-      <div class="portfolio-list" ref="grid">
+      <div ref="grid" class="portfolio-list">
         <PortfolioList :works="displayedWorks" @view-details="handleViewDetails" />
       </div>
     </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { preloadImages } from '@/composables/useImagePreloader.js'
 import PortfolioList from '@/components/PortfolioList.vue'
@@ -61,7 +61,7 @@ onMounted(async () => {
   // 1. 載入前 10 張並初始化 Masonry
   const firstTen = portfolioData.value.slice(0, 10)
   displayedWorks.value = firstTen
-  await preloadImages(firstTen.map((w) => w.image))
+  await preloadImages(firstTen.map(w => w.image))
   await initMasonry()
 
   // 2. 逐張載入剩餘圖片，append 到 Masonry
@@ -73,5 +73,40 @@ onMounted(async () => {
     msnry.reloadItems()
     msnry.layout()
   }
+
+  // 3. 綁定 throttled resize 事件
+  window.addEventListener('resize', throttledResize)
 })
+
+onUnmounted(() => {
+  window.removeEventListener('resize', throttledResize)
+  msnry?.destroy()
+})
+
+// throttle 函數，避免頻繁觸發 resize
+function throttle(func, delay) {
+  let timeoutId
+  let lastExecTime = 0
+  return function (...args) {
+    const currentTime = Date.now()
+
+    if (currentTime - lastExecTime > delay) {
+      func.apply(this, args)
+      lastExecTime = currentTime
+    } else {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(
+        () => {
+          func.apply(this, args)
+          lastExecTime = Date.now()
+        },
+        delay - (currentTime - lastExecTime)
+      )
+    }
+  }
+}
+
+const throttledResize = throttle(() => {
+  msnry?.layout()
+}, 250)
 </script>

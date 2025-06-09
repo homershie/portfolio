@@ -21,11 +21,12 @@
             <div class="col-lg-7">
               <div class="cont md-mb50">
                 <h3 class="mb-15 fw-500">{{ project.title }}</h3>
+                <!-- eslint-disable-next-line vue/no-v-html -->
                 <p v-html="formattedDescription"></p>
 
                 <!-- 圖片畫廊 -->
                 <div
-                  v-if="project.gallery && project.gallery.some((image) => image)"
+                  v-if="project.gallery && project.gallery.some(image => image)"
                   class="imgs mt-80"
                 >
                   <div class="row md-marg">
@@ -51,7 +52,7 @@
                     <span class="sub-title"> <i class="fas fa-list-ul mr-10"></i> 類別 : </span>
                     <p>{{ formatCategory(project.category) }}</p>
                   </li>
-                  <li class="mb-30" v-if="project.client">
+                  <li v-if="project.client" class="mb-30">
                     <span class="sub-title"> <i class="far fa-user mr-10"></i> 客戶 : </span>
                     <p>{{ project.client }}</p>
                   </li>
@@ -91,7 +92,7 @@ const formattedDescription = computed(() => {
 })
 
 // 格式化日期
-const formatDate = (dateString) => {
+const formatDate = dateString => {
   if (!dateString) return ''
   const date = new Date(dateString)
   return date.toLocaleDateString('zh-TW', {
@@ -102,7 +103,7 @@ const formatDate = (dateString) => {
 }
 
 // 格式化類別陣列
-const formatCategory = (categories) => {
+const formatCategory = categories => {
   if (!categories) return ''
   if (Array.isArray(categories)) {
     return categories.join(', ')

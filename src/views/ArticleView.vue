@@ -1,5 +1,5 @@
 <template>
-  <section class="main-post section-padding" v-if="article">
+  <section v-if="article" class="main-post section-padding">
     <div class="container with-pad">
       <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -17,6 +17,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-9">
           <div class="cont">
+            <!-- eslint-disable-next-line vue/no-v-html -->
             <div v-html="article.content"></div>
 
             <!-- 分享區域 -->
@@ -174,13 +175,13 @@ function loadArticle() {
 // 更新 meta 標籤
 function updateMetaTags(seo) {
   // 更新 description
-  let descMeta = document.querySelector('meta[name="description"]')
+  const descMeta = document.querySelector('meta[name="description"]')
   if (descMeta) {
     descMeta.setAttribute('content', seo.description)
   }
 
   // 更新 keywords
-  let keywordsMeta = document.querySelector('meta[name="keywords"]')
+  const keywordsMeta = document.querySelector('meta[name="keywords"]')
   if (keywordsMeta) {
     keywordsMeta.setAttribute('content', seo.keywords)
   }
@@ -189,7 +190,7 @@ function updateMetaTags(seo) {
 // 監聽路由變化
 watch(() => route.params.id, loadArticle)
 
-watch(article, (a) => {
+watch(article, a => {
   if (!a) return
   useHead({
     title: `${a.title} – 荷馬桑 Homer Shie`,
@@ -206,14 +207,14 @@ watch(article, (a) => {
 })
 
 // 1. 監聽 article 變動
-watch(article, async (a) => {
+watch(article, async a => {
   if (!a) return
 
   // 2. 等 v-html 渲染完
   await nextTick()
 
   // 3. 收集所有文章內圖片 URL
-  const urls = Array.from(document.querySelectorAll('.cont .image img')).map((img) => img.src)
+  const urls = Array.from(document.querySelectorAll('.cont .image img')).map(img => img.src)
 
   // 4. 預載前 10 張
   await preloadImages(urls)

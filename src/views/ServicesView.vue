@@ -280,9 +280,9 @@ const portfolioData = ref(portfolio)
 const totalProjectCount = computed(() => portfolioData.value.length)
 
 // 根據類別計算專案數量
-const getProjectCount = (targetCategory) => {
+const getProjectCount = targetCategory => {
   if (!portfolioData.value.length) return 0
-  return portfolioData.value.filter((project) => {
+  return portfolioData.value.filter(project => {
     if (Array.isArray(project.category)) {
       return project.category.includes(targetCategory)
     }

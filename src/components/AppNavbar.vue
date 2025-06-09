@@ -17,9 +17,9 @@
 
         <div class="col-lg-6 order3">
           <div
-            class="bg"
-            ref="bgRef"
             v-show="isMenuOpen || isDesktop"
+            ref="bgRef"
+            class="bg"
             :class="{ open: isMenuOpen }"
           >
             <!-- navbar links -->
@@ -96,8 +96,8 @@
             <button
               class="navbar-toggler"
               type="button"
-              @click.stop="toggleMenu"
               :class="{ active: isMenuOpen }"
+              @click.stop="toggleMenu"
             >
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -110,7 +110,7 @@
   </nav>
 
   <teleport to="body">
-    <div class="overlay" v-show="isMenuOpen && !isDesktop"></div>
+    <div v-show="isMenuOpen && !isDesktop" class="overlay"></div>
   </teleport>
 </template>
 
@@ -142,13 +142,13 @@ onBeforeUnmount(() => {
 })
 
 // 當打開手機版選單時做 GSAP 動畫
-watch(isMenuOpen, async (open) => {
+watch(isMenuOpen, async open => {
   if (open && !isDesktop.value) {
     await nextTick()
     gsap.fromTo(
       bgRef.value,
       { y: -100, autoAlpha: 0, filter: 'blur(50px)' },
-      { y: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' },
+      { y: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' }
     )
   }
 })
@@ -158,7 +158,7 @@ watch(
   () => route.path,
   () => {
     if (!isDesktop.value) isMenuOpen.value = false
-  },
+  }
 )
 </script>
 

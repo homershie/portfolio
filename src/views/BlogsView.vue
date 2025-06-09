@@ -49,8 +49,8 @@
           <div class="sidebar">
             <div class="search-box">
               <input
-                type="text"
                 v-model="searchQuery"
+                type="text"
                 placeholder="搜尋文章"
                 @input="filterPosts"
               />
@@ -120,7 +120,7 @@ import { articles } from '@/data/articleData.js'
 const searchQuery = ref('')
 const selectedCategory = ref('all')
 
-const toLocalString = (isoDate) => {
+const toLocalString = isoDate => {
   return new Date(isoDate).toLocaleDateString()
 }
 
@@ -131,14 +131,14 @@ const filteredPosts = computed(() => {
   let posts = allPosts.value
 
   if (selectedCategory.value !== 'all') {
-    posts = posts.filter((post) => post.category === selectedCategory.value)
+    posts = posts.filter(post => post.category === selectedCategory.value)
   }
 
   if (searchQuery.value) {
     posts = posts.filter(
-      (post) =>
+      post =>
         post.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchQuery.value.toLowerCase()),
+        post.excerpt.toLowerCase().includes(searchQuery.value.toLowerCase())
     )
   }
 
@@ -152,7 +152,7 @@ const latestPosts = computed(() => {
 })
 
 function getPostCountByCategory(category) {
-  return allPosts.value.filter((post) => post.category === category).length
+  return allPosts.value.filter(post => post.category === category).length
 }
 
 function filterByCategory(category) {

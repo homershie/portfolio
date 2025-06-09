@@ -1,50 +1,49 @@
-
 /* Cursor
 -----------------------------------------------------------------*/
 
 .hover-this {
-
-    .hover-anim {
-        pointer-events: none;
-        transition: transform 0.2s linear;
-    }
+  .hover-anim {
+    pointer-events: none;
+    transition: transform 0.2s linear;
+  }
 }
 
 .cursor {
-    pointer-events: none;
-    position: fixed;
-    padding: 0.3rem;
-    margin-left: -3px;
-    margin-top: -2px;
-    background-color: #fff;
-    border-radius: 50%;
-    mix-blend-mode: difference;
-    transition: transform 0.3s ease, opacity 0.4s ease;
-    z-index: 99999;
+  pointer-events: none;
+  position: fixed;
+  padding: 0.3rem;
+  margin-left: -3px;
+  margin-top: -2px;
+  background-color: #fff;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  transition:
+    transform 0.3s ease,
+    opacity 0.4s ease;
+  z-index: 99999;
 }
 
 .cursor-active {
-    transform: translate(-50%, -50%) scale(8);
-    opacity: .1;
+  transform: translate(-50%, -50%) scale(8);
+  opacity: 0.1;
 }
 
 .rolling-text {
-    display: inline-block;
-    overflow: hidden;
-    line-height: 50px;
-    height: 50px;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 50px;
+  height: 50px;
 
-    &.butn{
-        padding: 0 35px;
-    }
+  &.butn {
+    padding: 0 35px;
+  }
 }
 
-.social-text{
-
-    .rolling-text{
-        line-height: 30px;
-        height: 30px;
-    }
+.social-text {
+  .rolling-text {
+    line-height: 30px;
+    height: 30px;
+  }
 }
 
 .rolling-text:hover .letter,
@@ -140,4 +139,3 @@
 .letter:nth-child(21) {
   transition-delay: 0.3s;
 }
-

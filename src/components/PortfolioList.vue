@@ -1,7 +1,7 @@
 <template>
   <div class="gallery">
     <div class="row">
-      <div class="col-lg-4 items" v-for="work in sortedWorks" :key="work.id">
+      <div v-for="work in sortedWorks" :key="work.id" class="col-lg-4 items">
         <div class="item">
           <div class="img">
             <img :src="work.image" :alt="work.title" />
@@ -11,7 +11,7 @@
             <div>
               <h6>{{ work.title }}</h6>
               <!-- 修改這裡，迭代 category 陣列 -->
-              <span class="tag" v-for="(tag, index) in work.category" :key="index">{{ tag }}</span>
+              <span v-for="(tag, index) in work.category" :key="index" class="tag">{{ tag }}</span>
             </div>
             <div class="ml-auto">
               <div class="arrow">
@@ -72,7 +72,7 @@ onMounted(() => {
     if (!container || items.length === 0) return
 
     // 設定初始狀態（移除 scale 避免影響布局）
-    items.forEach((item) => {
+    items.forEach(item => {
       gsap.set(item, { opacity: 0, y: 50 })
     })
 
@@ -115,7 +115,7 @@ onMounted(() => {
         setupAnimations()
       }, 100)
     } else {
-      images.forEach((img) => {
+      images.forEach(img => {
         if (img.complete) {
           checkAllImagesLoaded()
         } else {
@@ -129,8 +129,8 @@ onMounted(() => {
     const setupAnimations = () => {
       // 使用 Intersection Observer 但不改變 scale
       const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
+        entries => {
+          entries.forEach(entry => {
             if (entry.isIntersecting) {
               gsap.to(entry.target, {
                 opacity: 1,
@@ -152,11 +152,11 @@ onMounted(() => {
         {
           threshold: 0.1,
           rootMargin: '0px 0px -10% 0px',
-        },
+        }
       )
 
       // 開始觀察所有項目
-      items.forEach((item) => {
+      items.forEach(item => {
         observer.observe(item)
       })
     }

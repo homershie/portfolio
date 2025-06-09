@@ -286,7 +286,7 @@ const experiences = ref([
 ])
 
 // 新增技能的方法
-const addSkill = (newSkill) => {
+const addSkill = newSkill => {
   skills.value.push({
     id: skills.value.length + 1,
     ...newSkill,
@@ -294,7 +294,7 @@ const addSkill = (newSkill) => {
 }
 
 // 新增經驗的方法
-const addExperience = (newExperience) => {
+const addExperience = newExperience => {
   experiences.value.unshift({
     id: experiences.value.length + 1,
     ...newExperience,
@@ -305,13 +305,13 @@ onMounted(() => {
   // 使用 IntersectionObserver 監測技能區域是否進入視窗範圍
   const skillsSection = document.querySelector('.skills')
   const observer = new IntersectionObserver(
-    (entries) => {
+    entries => {
       if (entries[0].isIntersecting) {
         animatedSkills.value = true
         observer.disconnect() // 監測到後停止監測
       }
     },
-    { threshold: 0.5 }, // 50% 可見時觸發
+    { threshold: 0.5 } // 50% 可見時觸發
   )
   observer.observe(skillsSection)
 

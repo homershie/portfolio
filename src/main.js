@@ -43,13 +43,13 @@ library.add(
   faLightbulb,
   faBell,
   faStickyNote,
-  faMapMarkerAlt,
+  faMapMarkerAlt
 )
 
 const app = createApp(App)
 
 // 註冊 FontAwesome 組件
-app.component('font-awesome-icon', FontAwesomeIcon)
+app.component('FontAwesomeIcon', FontAwesomeIcon)
 
 app.use(createPinia())
 app.use(router)

@@ -4,7 +4,7 @@ export function enableImageLightbox() {
   // 等 DOM 渲染完
   nextTick(() => {
     const images = document.querySelectorAll('.cont .image img')
-    images.forEach((img) => {
+    images.forEach(img => {
       let hasLinkParent = false
       let node = img.parentElement
       while (node) {
@@ -16,7 +16,7 @@ export function enableImageLightbox() {
       }
       if (!hasLinkParent) {
         img.style.cursor = 'zoom-in'
-        img.onclick = (e) => {
+        img.onclick = e => {
           e.stopPropagation()
           openLightbox(img.src, img.alt)
         }

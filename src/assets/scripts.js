@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Image error handling
   function handleImageErrors() {
     const images = document.querySelectorAll('img')
-    images.forEach((img) => {
+    images.forEach(img => {
       img.addEventListener('error', function () {
-        console.warn('Image failed to load:', this.src)
         // 可以設置備用圖片
         // this.src = 'assets/imgs/placeholder.jpg';
         this.alt = '圖片載入失敗'
+        this.style.display = 'none' // 隱藏無法載入的圖片
       })
     })
   }
@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // External link security
   function secureExternalLinks() {
     const externalLinks = document.querySelectorAll(
-      'a[href^="http"]:not([href*="' + window.location.hostname + '"])',
+      `a[href^="http"]:not([href*="${window.location.hostname}"])`
     )
-    externalLinks.forEach((link) => {
+    externalLinks.forEach(link => {
       if (!link.getAttribute('rel')) {
         link.setAttribute('rel', 'noopener noreferrer')
       }
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize smooth scroll without external dependencies
   const anchorLinks = document.querySelectorAll('a[href^="#"]')
 
-  anchorLinks.forEach((link) => {
+  anchorLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href')
       if (targetId && targetId !== '#') {
@@ -92,18 +92,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const menuLinks = document.querySelectorAll('.fixed-menu .menu-links a')
 
-  menuLinks.forEach((link) => {
+  menuLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault()
       const tabId = this.getAttribute('data-tab')
 
       // Remove active class from all links
-      menuLinks.forEach((l) => l.classList.remove('active'))
+      menuLinks.forEach(l => l.classList.remove('active'))
       this.classList.add('active')
 
       // Remove current class from all sections
       const minSecs = document.querySelectorAll('.min-box .min-sec')
-      minSecs.forEach((sec) => sec.classList.remove('current'))
+      minSecs.forEach(sec => sec.classList.remove('current'))
 
       // Add current class to target section
       const targetSection = document.getElementById(tabId)
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const bgElements = document.querySelectorAll('.bg-img, section')
 
-  bgElements.forEach((element) => {
+  bgElements.forEach(element => {
     const bgImage = element.getAttribute('data-background')
     if (bgImage) {
       element.style.backgroundImage = `url(${bgImage})`
@@ -133,18 +133,18 @@ document.addEventListener('DOMContentLoaded', function () {
   // Regular tabs
   const tabLinks = document.querySelectorAll('#tabs .tab-links .item-link')
 
-  tabLinks.forEach((link) => {
+  tabLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault()
       const tabId = this.getAttribute('data-tab')
 
       // Remove current class from all tab links
-      tabLinks.forEach((l) => l.classList.remove('current'))
+      tabLinks.forEach(l => l.classList.remove('current'))
       this.classList.add('current')
 
       // Hide all tab content
       const tabContents = document.querySelectorAll('.tab-content')
-      tabContents.forEach((content) => (content.style.display = 'none'))
+      tabContents.forEach(content => (content.style.display = 'none'))
 
       // Show target tab content
       const targetTab = document.getElementById(tabId)
@@ -157,18 +157,18 @@ document.addEventListener('DOMContentLoaded', function () {
   // Fade tabs
   const fadeTabLinks = document.querySelectorAll('#tabs-fade .tab-links .item-link')
 
-  fadeTabLinks.forEach((link) => {
+  fadeTabLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault()
       const tabId = this.getAttribute('data-tab')
 
       // Remove current class from all tab links
-      fadeTabLinks.forEach((l) => l.classList.remove('current'))
+      fadeTabLinks.forEach(l => l.classList.remove('current'))
       this.classList.add('current')
 
       // Fade out all tab content
       const tabContents = document.querySelectorAll('.tab-content')
-      tabContents.forEach((content) => {
+      tabContents.forEach(content => {
         content.style.opacity = '0'
         setTimeout(() => (content.style.display = 'none'), 300)
       })
@@ -190,13 +190,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const accordionTitles = document.querySelectorAll('.accordion .title')
 
-  accordionTitles.forEach((title) => {
+  accordionTitles.forEach(title => {
     title.addEventListener('click', function () {
       const accordionInfo = this.nextElementSibling
 
       // Close all other accordion items
       const allAccordionInfos = document.querySelectorAll('.accordion-info')
-      allAccordionInfos.forEach((info) => {
+      allAccordionInfos.forEach(info => {
         if (info !== accordionInfo) {
           info.style.display = 'none'
         }
@@ -211,10 +211,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const accordionItems = document.querySelectorAll('.accordion .item')
 
-  accordionItems.forEach((item) => {
+  accordionItems.forEach(item => {
     item.addEventListener('click', function () {
       // Remove active class from all items
-      accordionItems.forEach((i) => i.classList.remove('active'))
+      accordionItems.forEach(i => i.classList.remove('active'))
       // Add active class to clicked item
       this.classList.add('active')
     })
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const tooltipElements = document.querySelectorAll('[data-tooltip-tit]')
 
-  tooltipElements.forEach((element) => {
+  tooltipElements.forEach(element => {
     element.addEventListener('mouseenter', function () {
       const tooltipText = this.getAttribute('data-tooltip-tit')
       const tooltip = document.createElement('div')
@@ -249,8 +249,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Position tooltip
       const rect = this.getBoundingClientRect()
-      tooltip.style.left = rect.left + 'px'
-      tooltip.style.top = rect.top - tooltip.offsetHeight - 5 + 'px'
+      tooltip.style.left = `${rect.left}px`
+      tooltip.style.top = `${rect.top - tooltip.offsetHeight - 5}px`
 
       // Fade in
       setTimeout(() => (tooltip.style.opacity = '1'), 10)
@@ -258,14 +258,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     element.addEventListener('mouseleave', function () {
       const tooltips = document.querySelectorAll('.div-tooltip-tit')
-      tooltips.forEach((tooltip) => tooltip.remove())
+      tooltips.forEach(tooltip => tooltip.remove())
     })
 
     element.addEventListener('mousemove', function (e) {
       const tooltip = document.querySelector('.div-tooltip-tit')
       if (tooltip) {
-        tooltip.style.left = e.pageX + 10 + 'px'
-        tooltip.style.top = e.pageY - 30 + 'px'
+        tooltip.style.left = `${e.pageX + 10}px`
+        tooltip.style.top = `${e.pageY - 30}px`
       }
     })
   })
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Sub tooltips
   const subTooltipElements = document.querySelectorAll('[data-tooltip-sub]')
 
-  subTooltipElements.forEach((element) => {
+  subTooltipElements.forEach(element => {
     element.addEventListener('mouseenter', function () {
       const tooltipText = this.getAttribute('data-tooltip-sub')
       const tooltip = document.createElement('div')
@@ -296,8 +296,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Position tooltip
       const rect = this.getBoundingClientRect()
-      tooltip.style.left = rect.left + 30 + 'px'
-      tooltip.style.top = rect.top - 15 + 'px'
+      tooltip.style.left = `${rect.left + 30}px`
+      tooltip.style.top = `${rect.top - 15}px`
 
       // Fade in
       setTimeout(() => (tooltip.style.opacity = '1'), 10)
@@ -305,14 +305,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     element.addEventListener('mouseleave', function () {
       const tooltips = document.querySelectorAll('.div-tooltip-sub')
-      tooltips.forEach((tooltip) => tooltip.remove())
+      tooltips.forEach(tooltip => tooltip.remove())
     })
 
     element.addEventListener('mousemove', function (e) {
       const tooltip = document.querySelector('.div-tooltip-sub')
       if (tooltip) {
-        tooltip.style.left = e.pageX + 30 + 'px'
-        tooltip.style.top = e.pageY - 15 + 'px'
+        tooltip.style.left = `${e.pageX + 30}px`
+        tooltip.style.top = `${e.pageY - 15}px`
       }
     })
   })
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Menu hover effects
   const menuHoverElements = document.querySelectorAll('.fixed-menu a, .left-area .menu-links a')
 
-  menuHoverElements.forEach((element) => {
+  menuHoverElements.forEach(element => {
     element.addEventListener('mouseenter', function () {
       this.classList.add('show')
     })
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', function () {
     const progressBars = document.querySelectorAll('.skill-progress .progres')
 
-    progressBars.forEach((progress) => {
+    progressBars.forEach(progress => {
       const rect = progress.getBoundingClientRect()
       const windowHeight = window.innerHeight
 
@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const parallaxElements = document.querySelectorAll('.parallaxie')
 
   function updateParallax() {
-    parallaxElements.forEach((element) => {
+    parallaxElements.forEach(element => {
       const speed = 0.8
       const yPos = -(window.pageYOffset * speed)
       element.style.transform = `translateY(${yPos}px)`
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function animateCounters() {
     const counters = document.querySelectorAll('.number-sec .count')
 
-    counters.forEach((counter) => {
+    counters.forEach(counter => {
       const target = parseInt(counter.textContent)
       const duration = 500
       const increment = target / (duration / 16)
@@ -399,15 +399,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const numberSection = document.querySelector('.number-sec')
   if (numberSection) {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             animateCounters()
             observer.unobserve(entry.target)
           }
         })
       },
-      { threshold: 0.5 },
+      { threshold: 0.5 }
     )
 
     observer.observe(numberSection)
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const hoverElements = document.querySelectorAll('.hover-this')
   const cursor = document.querySelector('.cursor')
 
-  hoverElements.forEach((element) => {
+  hoverElements.forEach(element => {
     element.addEventListener('mousemove', function (e) {
       const hoverAnim = this.querySelector('.hover-anim')
       if (hoverAnim) {
@@ -447,14 +447,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Cursor movement
   if (cursor) {
     window.addEventListener('mousemove', function (e) {
-      cursor.style.left = e.clientX + 'px'
-      cursor.style.top = e.clientY + 'px'
+      cursor.style.left = `${e.clientX}px`
+      cursor.style.top = `${e.clientY}px`
     })
 
     // Cursor hover effects
     const cursorElements = document.querySelectorAll('a, .cursor-pointer')
 
-    cursorElements.forEach((element) => {
+    cursorElements.forEach(element => {
       element.addEventListener('mouseenter', function () {
         cursor.classList.add('cursor-active')
       })
@@ -471,14 +471,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const rollingTextElements = document.querySelectorAll('.rolling-text')
 
-  rollingTextElements.forEach((element) => {
+  rollingTextElements.forEach(element => {
     const innerText = element.innerText
     element.innerHTML = ''
 
     const textContainer = document.createElement('div')
     textContainer.classList.add('block')
 
-    for (let letter of innerText) {
+    for (const letter of innerText) {
       const span = document.createElement('span')
       span.innerText = letter.trim() === '' ? '\xa0' : letter
       span.classList.add('letter')
@@ -711,26 +711,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (prev) {
       if (!conf.navigation) conf.navigation = {}
-      conf.navigation.prevEl = '#' + prev
+      conf.navigation.prevEl = `#${prev}`
     }
     if (next) {
       if (!conf.navigation) conf.navigation = {}
-      conf.navigation.nextEl = '#' + next
+      conf.navigation.nextEl = `#${next}`
     }
     if (pagination) {
       conf.pagination = {
-        el: '#' + pagination,
+        el: `#${pagination}`,
         clickable: true,
       }
     }
 
     // Initialize Swiper
     if (containe) {
-      const initID = '#' + containe
+      const initID = `#${containe}`
       new Swiper(initID, conf)
     }
   })
-
 
   /* =============================================================================
       -------------------------------  Preloader svg   -------------------------------
@@ -820,7 +819,6 @@ window.addEventListener('load', function () {
     body.classList.remove('loaded')
   }, 1500)
 
-
   /* =============================================================================
       -----------------------------  Contact Validation   -----------------------------
       ============================================================================= */
@@ -866,9 +864,9 @@ window.addEventListener('load', function () {
           method: 'POST',
           body: formData,
         })
-          .then((response) => response.json())
-          .then((data) => {
-            const messageAlert = 'alert-' + data.type
+          .then(response => response.json())
+          .then(data => {
+            const messageAlert = `alert-${data.type}`
             const messageText = data.message
             const alertBox = `<div class="alert ${messageAlert} alert-dismissable">
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -881,8 +879,13 @@ window.addEventListener('load', function () {
               this.reset()
             }
           })
-          .catch((error) => {
-            console.error('Error:', error)
+          .catch(_error => {
+            // Handle form submission error gracefully
+            const messagesDiv = this.querySelector('.messages')
+            if (messagesDiv) {
+              messagesDiv.innerHTML =
+                '<div class="alert alert-danger">表單提交失敗，請稍後重試。</div>'
+            }
           })
       }
     })
