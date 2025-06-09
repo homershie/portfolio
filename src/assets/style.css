@@ -2556,7 +2556,9 @@ body.loaded {
   transition: all 0.4s;
 }
 
------------------------------------------------------------------*/ .brands h6 {
+/* Brands
+-----------------------------------------------------------------*/
+.brands h6 {
   font-size: 14px;
   display: inline-block;
   padding: 12px 30px;
