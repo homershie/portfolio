@@ -14,7 +14,7 @@
               ></iframe>
             </template>
             <template v-else>
-              <img :src="project.mainImage" :alt="project.title" class="radius-5 w-50" />
+              <img :src="project.mainImage" :alt="project.title" class="radius-5 w-md-50 w-100" />
             </template>
           </div>
           <div class="row justify-content-center">
