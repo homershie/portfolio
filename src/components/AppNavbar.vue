@@ -106,8 +106,8 @@
 
   <teleport to="body">
     <div
+      v-if="isMenuOpen && !isDesktop"
       class="overlay"
-      v-show="isMenuOpen && !isDesktop"
       @click.self="closeMenu"
       style="z-index: 9999"
     ></div>
@@ -146,13 +146,29 @@ onBeforeUnmount(() => {
 
 // 當打開手機版選單時做 GSAP 動畫
 watch(isMenuOpen, async (open) => {
-  if (open && !isDesktop.value) {
-    await nextTick()
-    gsap.fromTo(
-      bgRef.value,
-      { y: -100, autoAlpha: 0, filter: 'blur(50px)' },
-      { y: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' },
-    )
+  await nextTick()
+  if (!isDesktop.value) {
+    if (open) {
+      gsap.fromTo(
+        bgRef.value,
+        { y: -100, autoAlpha: 0, filter: 'blur(50px)' },
+        {
+          y: 0,
+          autoAlpha: 1,
+          filter: 'blur(0px)',
+          duration: 0.5,
+          ease: 'power2.out',
+        },
+      )
+    } else {
+      gsap.to(bgRef.value, {
+        y: -100,
+        autoAlpha: 0,
+        filter: 'blur(50px)',
+        duration: 0.5,
+        ease: 'power2.in',
+      })
+    }
   }
 })
 
