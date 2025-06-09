@@ -1,12 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import AboutView from '@/views/AboutView.vue'
-import ServicesView from '@/views/ServicesView.vue'
-import PortfolioView from '@/views/PortfolioView.vue'
-import BlogsView from '@/views/BlogsView.vue'
-import ArticleView from '@/views/ArticleView.vue'
-import ContactView from '@/views/ContactView.vue'
-import ProjectView from '@/views/ProjectDetailView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -19,37 +12,37 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: AboutView,
+      component: () => import('@/views/AboutView.vue'),
     },
     {
       path: '/services',
       name: 'services',
-      component: ServicesView,
+      component: () => import('@/views/ServicesView.vue'),
     },
     {
       path: '/portfolio',
       name: 'portfolio',
-      component: PortfolioView,
+      component: () => import('@/views/PortfolioView.vue'),
     },
     {
       path: '/blogs',
       name: 'blogs',
-      component: BlogsView,
+      component: () => import('@/views/BlogsView.vue'),
     },
     {
       path: '/article/:id',
       name: 'article',
-      component: ArticleView,
+      component: () => import('@/views/ArticleView.vue'),
     },
     {
       path: '/contact',
       name: 'contact',
-      component: ContactView,
+      component: () => import('@/views/ContactView.vue'),
     },
     {
       path: '/project/:id',
       name: 'project',
-      component: ProjectView,
+      component: () => import('@/views/ProjectDetailView.vue'),
     },
   ],
   scrollBehavior(to, from, savedPosition) {

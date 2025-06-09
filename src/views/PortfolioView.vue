@@ -19,7 +19,9 @@
       </div>
 
       <!-- 作品列表 -->
-      <PortfolioList :works="displayedWorks" @view-details="handleViewDetails" />
+      <div class="portfolio-list" ref="grid">
+        <PortfolioList :works="displayedWorks" @view-details="handleViewDetails" />
+      </div>
     </div>
   </section>
 </template>
@@ -32,47 +34,44 @@ import PortfolioList from '@/components/PortfolioList.vue'
 import { usePortfolio } from '@/composables/usePortfolio.js'
 import Masonry from 'masonry-layout'
 
-const displayedWorks = ref([]) // 實際顯示的作品
+const grid = ref(null)
+let msnry = null
+
+const displayedWorks = ref([])
 const { portfolioData } = usePortfolio()
-const imagesLoaded = ref(false)
 const router = useRouter()
 
 function handleViewDetails(work) {
   router.push(`/project/${work.id}`)
 }
 
-// 瀑布流重新計算
-const recalculateMasonryLayout = () => {
-  nextTick(() => {
-    const grid = document.querySelector('.portfolio-list')
-    if (grid) {
-      const m = new Masonry(grid, {
-        itemSelector: '.portfolio-item',
-        columnWidth: '.portfolio-item',
-        percentPosition: true,
-      })
-      m.layout()
-    }
-  })
+async function initMasonry() {
+  await nextTick()
+  if (grid.value && !msnry) {
+    msnry = new Masonry(grid.value, {
+      itemSelector: '.portfolio-item',
+      columnWidth: '.portfolio-item',
+      percentPosition: true,
+    })
+  }
+  msnry?.layout()
 }
 
-// 使用 preloadImages 預載前 10 張
 onMounted(async () => {
-  // 先載入前 10 張
+  // 1. 載入前 10 張並初始化 Masonry
   const firstTen = portfolioData.value.slice(0, 10)
   displayedWorks.value = firstTen
-  const urls = firstTen.map((w) => w.image)
-  await preloadImages(urls)
-  imagesLoaded.value = true
-  recalculateMasonryLayout()
+  await preloadImages(firstTen.map((w) => w.image))
+  await initMasonry()
 
-  // 再載入剩下的
+  // 2. 逐張載入剩餘圖片，append 到 Masonry
   const rest = portfolioData.value.slice(10)
   for (const work of rest) {
     await preloadImages([work.image])
     displayedWorks.value.push(work)
     await nextTick()
-    recalculateMasonryLayout()
+    msnry.reloadItems()
+    msnry.layout()
   }
 })
 </script>
