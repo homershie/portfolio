@@ -11,6 +11,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   'use strict'
+  /* global GLightbox, Swiper, gsap, Isotope */
 
   /* =============================================================================
       --------------------------------  Performance & Error Handling   --------------------------------
@@ -95,9 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 
-  function noScroll() {
-    window.scrollTo(0, 0)
-  }
+
 
   /* =============================================================================
       --------------------------------  Navbar Tabs   --------------------------------
@@ -346,22 +345,6 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =============================================================================
       ---------------------------------  Progress  -----------------------------------
       ============================================================================= */
-
-  function animateProgressBars() {
-    const progressBars = document.querySelectorAll('.skill-progress .progres')
-
-    progressBars.forEach((progress) => {
-      const percentage = progress.getAttribute('data-value')
-      if (percentage) {
-        progress.style.width = '0%'
-        setTimeout(() => {
-          progress.style.transition = 'width 1.5s ease-in-out'
-          progress.style.width = percentage
-        }, 200)
-      }
-    })
-  }
-
   // Trigger progress animation when in viewport
   window.addEventListener('scroll', function () {
     const progressBars = document.querySelectorAll('.skill-progress .progres')
@@ -403,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize GLightbox for images
   if (window.GLightbox) {
-    const lightbox = GLightbox({
+    GLightbox({
       selector: '.popup-img .popimg, .gallery .popimg',
       touchNavigation: true,
       loop: true,
@@ -770,7 +753,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize Swiper
     if (containe) {
       const initID = '#' + containe
-      const swiper = new Swiper(initID, conf)
+      new Swiper(initID, conf)
     }
   })
 
