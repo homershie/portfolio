@@ -19,20 +19,19 @@
       </div>
 
       <!-- 作品列表 -->
-      <PortfolioList :works="portfolioData" @view-details="handleViewDetails" />
+      <PortfolioList :works="displayedWorks" @view-details="handleViewDetails" />
     </div>
   </section>
 </template>
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
-import { useRouter } from 'vue-router'
 import { preloadImages } from '@/composables/useImagePreloader.js'
 import PortfolioList from '@/components/PortfolioList.vue'
 import { usePortfolio } from '@/composables/usePortfolio.js'
 import Masonry from 'masonry-layout'
 
-const router = useRouter()
+const displayedWorks = ref([]) // 實際顯示的作品
 const { portfolioData } = usePortfolio()
 const imagesLoaded = ref(false)
 
@@ -53,14 +52,21 @@ const recalculateMasonryLayout = () => {
 
 // 使用 preloadImages 預載前 10 張
 onMounted(async () => {
-  const urls = portfolioData.value.map((w) => w.image)
-  await preloadImages(urls) // 內部已做 Promise.all + slice(0,10)
+  // 先載入前 10 張
+  const firstTen = portfolioData.value.slice(0, 10)
+  displayedWorks.value = firstTen
+  const urls = firstTen.map((w) => w.image)
+  await preloadImages(urls)
   imagesLoaded.value = true
   recalculateMasonryLayout()
-})
 
-// 查看詳情
-const handleViewDetails = (work) => {
-  router.push(`/project/${work.id}`)
-}
+  // 再載入剩下的
+  const rest = portfolioData.value.slice(10)
+  for (const work of rest) {
+    await preloadImages([work.image])
+    displayedWorks.value.push(work)
+    await nextTick()
+    recalculateMasonryLayout()
+  }
+})
 </script>
