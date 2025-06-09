@@ -3,8 +3,8 @@ export async function preloadImages(urls = []) {
   const promises = urls.slice(0, 12).map(src => {
     return new Promise(resolve => {
       const img = new Image()
-      img.onload = () => resolve()
-      img.onerror = () => resolve()
+      img.addEventListener('load', () => resolve())
+      img.addEventListener('error', () => resolve())
       img.src = src
     })
   })
