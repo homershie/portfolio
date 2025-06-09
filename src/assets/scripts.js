@@ -70,18 +70,8 @@ document.addEventListener('DOMContentLoaded', function () {
       --------------------------------  Navbar Menu   --------------------------------
       ============================================================================= */
 
-  const navbarToggler = document.querySelector('.navbar-toggler')
-  const navbarBg = document.querySelector('.navbar .bg')
-
-  if (navbarToggler && navbarBg) {
-    navbarToggler.addEventListener('click', function () {
-      if (navbarBg.style.display === 'none' || navbarBg.style.display === '') {
-        navbarBg.style.display = 'block'
-      } else {
-        navbarBg.style.display = 'none'
-      }
-    })
-  }
+  // Mobile menu visibility is handled by Vue components, so avoid
+  // manually toggling navbar elements here to prevent conflicts.
 
   // Navbar scroll effect
   const navbar = document.querySelector('.navbar-chang')
@@ -95,8 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
       if (navbar) navbar.classList.remove('nav-scroll')
     }
   })
-
-
 
   /* =============================================================================
       --------------------------------  Navbar Tabs   --------------------------------
