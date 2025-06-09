@@ -676,7 +676,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0049_A.png')],
     category: ['平面設計', 'UI/UX'],
     client: 'Gamin Ltd.',
-    date: '2019-10-5',
+    date: '2019-10-05',
     type: 'image',
   },
   {
@@ -690,7 +690,7 @@ export const portfolio = [
     gallery: [],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2019-10-5',
+    date: '2019-10-05',
     type: 'image',
   },
   {
@@ -704,7 +704,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0051_A.png'), w('project/work_main_0051_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2020-3-30',
+    date: '2020-03-30',
     type: 'image',
   },
   {
@@ -718,7 +718,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0052_A.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2020-6-11',
+    date: '2020-06-11',
     type: 'image',
   },
   {
@@ -746,7 +746,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0054_A.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2020-8-11',
+    date: '2020-08-11',
     type: 'image',
   },
   {
@@ -760,7 +760,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0055_A.png'), w('project/work_main_0055_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2020-8-7',
+    date: '2020-08-07',
     type: 'image',
   },
   {
@@ -774,7 +774,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0056_A.png'), w('project/work_main_0056_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2020-8-18',
+    date: '2020-08-18',
     type: 'image',
   },
   {
@@ -788,7 +788,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0056_A.png'), w('project/work_main_0056_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2020-8-7',
+    date: '2020-08-07',
     type: 'image',
   },
   {
@@ -816,7 +816,7 @@ export const portfolio = [
     gallery: [],
     category: ['動畫'],
     client: 'Gamin Ltd.',
-    date: '2020-4-28',
+    date: '2020-04-28',
     type: 'image',
   },
   {
@@ -830,7 +830,7 @@ export const portfolio = [
     gallery: [],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2021-7-12',
+    date: '2021-07-12',
     type: 'image',
   },
   {
@@ -844,7 +844,7 @@ export const portfolio = [
     gallery: [],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2021-7-12',
+    date: '2021-07-12',
     type: 'image',
   },
   {
@@ -858,7 +858,7 @@ export const portfolio = [
     gallery: [],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2021-7-12',
+    date: '2021-07-12',
     type: 'image',
   },
   {
@@ -873,7 +873,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0063_A.png'), w('project/work_main_0063_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2020-11-6',
+    date: '2020-11-06',
     type: 'image',
   },
   {
@@ -887,7 +887,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0064_A.png'), w('project/work_main_0064_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2022-2-8',
+    date: '2022-02-08',
     type: 'image',
   },
   {
@@ -901,7 +901,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0065_A.png'), w('project/work_main_0065_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2022-1-19',
+    date: '2022-01-19',
     type: 'image',
   },
   {
@@ -915,7 +915,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0066_A.png'), w('project/work_main_0066_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2022-3-1',
+    date: '2022-03-01',
     type: 'image',
   },
   {
@@ -929,7 +929,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0067_A.png'), w('project/work_main_0067_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2022-3-1',
+    date: '2022-03-01',
     type: 'image',
   },
   {
@@ -943,7 +943,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0068_B.png'), w('project/work_main_0068_C.png')],
     category: ['品牌設計'],
     client: null,
-    date: '2022-6-29',
+    date: '2022-06-29',
     type: 'image',
   },
   {
@@ -957,7 +957,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0069_A.png'), w('project/work_main_0069_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2021-4-30',
+    date: '2021-04-30',
     type: 'image',
   },
   {
@@ -971,7 +971,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0070_A.png'), w('project/work_main_0070_B.png')],
     category: ['平面設計', 'UI/UX', '插畫', '動畫'],
     client: 'Gamin Ltd.',
-    date: '2021-3-26',
+    date: '2021-03-26',
     type: 'image',
   },
   {
@@ -985,7 +985,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0071_A.png'), w('project/work_main_0071_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2021-9-27',
+    date: '2021-09-27',
     type: 'image',
   },
   {
@@ -999,7 +999,7 @@ export const portfolio = [
     gallery: [],
     category: ['動態設計', 'UI/UX'],
     client: 'Gamin Ltd.',
-    date: '2022-6-29',
+    date: '2022-06-29',
     type: 'image',
   },
   {
@@ -1013,7 +1013,7 @@ export const portfolio = [
     gallery: [],
     category: ['動態設計', 'UI/UX'],
     client: null,
-    date: '2022-9-21',
+    date: '2022-09-21',
     type: 'image',
   },
   {
@@ -1027,7 +1027,7 @@ export const portfolio = [
     gallery: [],
     category: ['動態設計', 'UI/UX'],
     client: 'Gamin Ltd.',
-    date: '2023-4-10',
+    date: '2023-04-10',
     type: 'image',
   },
   {
@@ -1042,7 +1042,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0075_A.jpg'), w('project/work_main_0075_B.jpg')],
     category: ['美術設計'],
     client: '小村遠遠',
-    date: '2023-1-17',
+    date: '2023-01-17',
     type: 'video',
     video: 'https://www.youtube.com/embed/h_Mt34f342o?si=1bx-Ues406I7XzvQ',
   },
@@ -1057,7 +1057,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0076_A.png'), w('project/work_main_0076_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2022-4-28',
+    date: '2022-04-28',
     type: 'image',
   },
   {
@@ -1071,7 +1071,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0077_A.png'), w('project/work_main_0077_B.png')],
     category: ['平面設計', 'UI/UX', '插畫', '3D'],
     client: 'Gamin Ltd.',
-    date: '2022-9-1',
+    date: '2022-09-01',
     type: 'image',
   },
   {
@@ -1113,7 +1113,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0080_A.png'), w('project/work_main_0080_B.png')],
     category: ['平面設計', 'UI/UX', '3D'],
     client: 'Gamin Ltd.',
-    date: '2023-5-12',
+    date: '2023-05-12',
     type: 'image',
   },
   {
@@ -1141,7 +1141,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0082_A.png'), w('project/work_main_0082_B.png')],
     category: ['平面設計', 'UI/UX', '3D'],
     client: 'Gamin Ltd.',
-    date: '2023-5-12',
+    date: '2023-05-12',
     type: 'image',
   },
   {
@@ -1155,7 +1155,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0083_A.png'), w('project/work_main_0083_B.png')],
     category: ['平面設計', 'UI/UX', '3D'],
     client: 'Gamin Ltd.',
-    date: '2024-7-10',
+    date: '2024-07-10',
     type: 'image',
   },
   {
@@ -1169,7 +1169,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0084_A.png'), w('project/work_main_0084_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2024-9-24',
+    date: '2024-09-24',
     type: 'image',
   },
   {
@@ -1183,7 +1183,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0085_A.png'), w('project/work_main_0085_B.png')],
     category: ['平面設計', 'UI/UX', '插畫'],
     client: 'Gamin Ltd.',
-    date: '2025-1-17',
+    date: '2025-01-17',
     type: 'image',
   },
   {
@@ -1197,7 +1197,7 @@ export const portfolio = [
     gallery: [w('project/work_main_0086_A.png'), w('project/work_main_0086_B.png')],
     category: ['平面設計', 'UI/UX', '動畫'],
     client: 'Gamin Ltd.',
-    date: '2025-4-17',
+    date: '2025-04-17',
     type: 'image',
   },
   {
@@ -1211,7 +1211,7 @@ export const portfolio = [
     gallery: [],
     category: ['網頁設計', 'UI/UX'],
     client: 'N/A',
-    date: '2025-5-2',
+    date: '2025-05-02',
     type: 'image',
   },
   {
@@ -1225,7 +1225,7 @@ export const portfolio = [
     gallery: [],
     category: ['網頁設計', 'UI/UX'],
     client: 'N/A',
-    date: '2025-5-22',
+    date: '2025-05-22',
     type: 'image',
   },
   {
@@ -1239,7 +1239,7 @@ export const portfolio = [
     gallery: [],
     category: ['網頁設計', 'UI/UX'],
     client: 'N/A',
-    date: '2025-5-27',
+    date: '2025-05-27',
     type: 'image',
   },
 ]

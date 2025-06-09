@@ -1,7 +1,7 @@
 export const articles = {
   'pop-art': {
     id: 'pop-art',
-    date: '2018-8-27',
+    date: '2018-08-27',
     title: '波普藝術－漫畫是藝術嗎？',
     category: 'GraphicStyle',
     categoryName: '視覺風格大全',
@@ -324,7 +324,7 @@ export const articles = {
   },
   mbe: {
     id: 'mbe',
-    date: '2018-9-4',
+    date: '2018-09-04',
     title: 'MBE風格－MBE是什麼，可以吃嗎？',
     category: 'GraphicStyle',
     categoryName: '視覺風格大全',
@@ -481,7 +481,7 @@ export const articles = {
   },
   'pixel-art': {
     id: 'pixel-art',
-    date: '2018-9-21',
+    date: '2018-09-21',
     title: '像素風格－遊戲人生我逍遙',
     category: 'GraphicStyle',
     categoryName: '視覺風格大全',
@@ -852,7 +852,7 @@ export const articles = {
   },
   vaporwave: {
     id: 'vaporwave',
-    date: '2019-11-1',
+    date: '2019-11-01',
     title: '蒸氣波－我們的現在是都是過去的未來',
     category: 'GraphicStyle',
     categoryName: '視覺風格大全',
@@ -1245,7 +1245,7 @@ export const articles = {
   },
   'modern-design-intro': {
     id: 'modern-design-intro',
-    date: '2020-9-25',
+    date: '2020-09-25',
     title:
       '設計流派導覽－當代、現代、後現代、超現代、元現代，哪個才是現在？像素風格－遊戲人生我逍遙',
     category: 'WorldVision',
@@ -1774,7 +1774,7 @@ export const articles = {
   },
   'art-nouveau': {
     id: 'art-nouveau',
-    date: '2020-11-4',
+    date: '2020-11-04',
     title: '新藝術運動－少女的力量',
     category: 'GraphicStyle',
     categoryName: '視覺風格大全',
