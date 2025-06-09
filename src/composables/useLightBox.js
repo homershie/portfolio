@@ -46,7 +46,6 @@ function openLightbox(src, alt) {
     'border-radius:10px',
     'box-shadow:0 0 20px #000',
     'object-fit:contain', // 保持等比例
-    'background:#222',
     'display:block',
   ].join(';')
   modal.appendChild(img)

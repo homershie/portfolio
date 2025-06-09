@@ -51,26 +51,44 @@
               <div
                 v-if="prevArticle"
                 class="thumb-post bg-img"
-                :data-background="prevArticle.thumbnail"
+                :style="{
+                  backgroundImage: `url('${prevArticle.thumbnail}')`,
+                  backgroundPosition: 'center center',
+                  backgroundSize: 'cover',
+                }"
               >
                 <router-link :to="`/article/${prevArticle.id}`">
-                  <span class="fz-12 text-u ls1 main-color mb-15">
+                  <span
+                    class="fz-12 text-u ls1 main-color mb-15"
+                    style="text-shadow: 2px 2px 2px #000"
+                  >
                     <i class="fas fa-angle-left"></i>
                     上一篇
                   </span>
-                  <h6 class="fw-500 fz-16">{{ prevArticle.title }}</h6>
+                  <h6 class="fw-500 fz-16" style="text-shadow: 2px 2px 2px #000">
+                    {{ prevArticle.title }}
+                  </h6>
                 </router-link>
               </div>
               <div
                 v-if="nextArticle"
                 class="thumb-post ml-auto text-right bg-img"
-                :data-background="nextArticle.thumbnail"
+                :style="{
+                  backgroundImage: `url('${nextArticle.thumbnail}')`,
+                  backgroundPosition: 'center center',
+                  backgroundSize: 'cover',
+                }"
               >
                 <router-link :to="`/article/${nextArticle.id}`">
-                  <span class="fz-12 text-u ls1 main-color mb-15">
+                  <span
+                    class="fz-12 text-u ls1 main-color mb-15"
+                    style="text-shadow: 2px 2px 2px #000"
+                  >
                     下一篇 <i class="fas fa-angle-right"></i>
                   </span>
-                  <h6 class="fw-500 fz-16">{{ nextArticle.title }}</h6>
+                  <h6 class="fw-500 fz-16" style="text-shadow: 2px 2px 2px #000">
+                    {{ nextArticle.title }}
+                  </h6>
                 </router-link>
               </div>
             </div>
@@ -110,6 +128,7 @@ const articleIds = Object.keys(articles)
 const prevArticle = computed(() => {
   if (!article.value) return null
   const currentIndex = articleIds.indexOf(article.value.id)
+  if (currentIndex === -1) return null
   const prevIndex = currentIndex - 1
   return prevIndex >= 0 ? articles[articleIds[prevIndex]] : null
 })
@@ -117,6 +136,7 @@ const prevArticle = computed(() => {
 const nextArticle = computed(() => {
   if (!article.value) return null
   const currentIndex = articleIds.indexOf(article.value.id)
+  if (currentIndex === -1) return null
   const nextIndex = currentIndex + 1
   return nextIndex < articleIds.length ? articles[articleIds[nextIndex]] : null
 })
@@ -271,6 +291,37 @@ article {
         color: var(--maincolor);
         margin-right: 10px;
       }
+    }
+  }
+  ol {
+    counter-reset: li; // ← 在 ol 上先把 li 歸零
+    padding-left: 20px;
+    margin: 40px 0;
+
+    li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      font-weight: normal;
+      line-height: 1.6;
+
+      &::before {
+        counter-increment: li; // 每個 li 自動 +1
+        content: counter(li) '.'; // 顯示目前計數
+        color: var(--maincolor);
+        margin-right: 10px;
+      }
+    }
+  }
+  blockquote {
+    margin: 40px 0;
+    padding-left: 20px;
+    border-left: 4px solid var(--maincolor);
+    font-style: italic;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    em {
+      font-weight: bold;
     }
   }
 }
