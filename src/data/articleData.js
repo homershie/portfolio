@@ -850,5 +850,69 @@ export const articles = {
         '視覺風格,設計,藝術,插畫,FlatDesign,artist,Taiwan,台灣,扁平化設計,JooJaebum,pixelart,電動,像素風格,JamesSvard,AdamFlynn,kaipixelart,極簡,kai,Lowpoly,三爺,minimalist,Ano塗鴉阿諾,遊戲,電玩,8bit,EBoy,videogame,藝術家,Jeff',
     },
   },
+  vaporwave: {
+    id: 'vaporwave',
+    date: '2019-11-1',
+    title: '蒸氣波－我們的現在是都是過去的未來',
+    category: 'GraphicStyle',
+    categoryName: '視覺風格大全',
+    excerpt:
+      '​「對酒當歌，人生幾何！譬如朝露，去日苦多。」 有些專家說我們這代二十幾歲的人是Z世代、90後、數位原生世代。有些人對未來感到迷茫，找不到生活的重心，對什麼事情都提不起勁；有些人看到房子、車子的價格對現實感到挫折無力。於是我們專注在享受當下，領到薪水馬上吃一頓千元的大餐...',
+    image: '/assets/imgs/blog/vaporwave.jpg',
+    thumbnail: '/assets/imgs/blog/vaporwave.jpg',
+    author: 'Homer Shie',
+    content: `
+
+`,
+    seo: {
+      description:
+        '，鏘鏘的視覺風格在年輕人中很快就流行起來。給人的感覺是復古未來的(Retro-futurism)、隨興的、爵士的、低保真(Lo-Fi)、迷幻的、超現實的、反烏托邦的、蒸氣波(Vaporwave)、賽博龐克(Cyberpunk)等風格。這些風格在視覺上都很有趣，並且能夠讓人感受到一種懷舊的感覺。',
+      keywords:
+        '視覺風格,設計,藝術,插畫,artist,Taiwan,台灣,Trap,Tumblr,PopArt,Glitch,Art,Chill,PixelArt,普普藝術,Vaporwave,Retro,futurism,故障藝術,賽博龐克,Cyberpunk,復古未來,像素藝術,超現實主義,反烏托邦,蒸氣波,LoFi,Surrealism,陷阱,蒸氣,音樂,低保真,EDM',
+    },
+  },
+  'modern-design-intro': {
+    id: 'modern-design-intro',
+    date: '2020-9-25',
+    title:
+      '設計流派導覽－當代、現代、後現代、超現代、元現代，哪個才是現在？像素風格－遊戲人生我逍遙',
+    category: 'WorldVision',
+    categoryName: '世界視界',
+    excerpt:
+      '常常被各種「現代」搞的烏煙瘴氣？這個系列主要幫助大家釐清各種「現代」運動對視覺傳達領域所帶來的明顯影響，以及瞭解正在萌芽的新時代文化思潮－元現代主義，讓大家不只是認識視覺設計歷史，還能實實在在的把歷史活用在你的專案。',
+    image: '/assets/imgs/blog/modern-design-intro.jpg',
+    thumbnail: '/assets/imgs/blog/modern-design-intro.jpg',
+    author: 'Homer Shie',
+    content: `
+
+`,
+    seo: {
+      description:
+        '本篇導覽把視覺風格化繁為簡，避開繁瑣的歷史脈絡和各類分支，簡單歸納成四大流派，傳統時代、現代、後現代、元現代，著重在用簡單的描述介紹各個流派的個性 ...本篇導覽把視覺風格化繁為簡，避開繁瑣的歷史脈絡和各類分支，簡單歸納成四大流派，傳統時代、現代、後現代、元現代，著重在用簡單的描述介紹各個流派的個性，並且介紹各個流派的代表人物、代表作品、代表風格，讓大家能夠快速的了解這些流派的特色，並且能夠在實際的專案中運用這些流派的特色。',
+      keywords:
+        '視覺風格,平面設計,工業40,輕現代,世界視界,平面設計史,現代主義,後現代主義,元現代主義,新現代主義,晚期現代主義,再現代主義,後後現代主義,超現代主義,變現代,數位現代主義,設計思潮',
+    },
+  },
+  'art-nouveau': {
+    id: 'art-nouveau',
+    date: '2020-11-4',
+    title: '新藝術運動－少女的力量',
+    category: 'GraphicStyle',
+    categoryName: '視覺風格大全',
+    excerpt:
+      '少女、花朵和植物不管何時都是藝術家和設計師們喜愛的元素，新藝術運動可以被視作開山始祖，但在一百多年前則是受人唾棄的商業藝術、應用美術。究竟新藝術運動如何翻身一躍變成世界範圍的美術運動，直到今天還能在庫洛魔法使的牌組等等流行文化一探新藝術的身影，就讓我們繼續看下去🕵️‍♀️',
+    image: '/assets/imgs/blog/art-nouveau.jpg',
+    thumbnail: '/assets/imgs/blog/art-nouveau.jpg',
+    author: 'Homer Shie',
+    content: `
+
+`,
+    seo: {
+      description:
+        '新藝術運動（Art Nouveau）則是延續這個時代浪潮下的視覺風格。在歐洲不同國家有不同稱呼：德國Jugendstil、奧地利Sezessionstil、意大利Stile Floreale',
+      keywords:
+        '視覺風格, 設計, 藝術, 插畫, 平面設計, 荷馬桑, homershie, 設計史, 藝術史, 藝術運動, 視覺, 工業革命, 美術工藝運動, 新藝術運動, 裝飾藝術, 嬉皮, 迷幻藝術, 迷幻搖滾, 古典, 復古, 唯美, 浪漫, 慕夏, 高更, 羅特列克, 切雷, 少女, 庫洛魔法使, 魔法少女, 少女漫畫',
+    },
+  },
   // 其他文章...
 }

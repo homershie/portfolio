@@ -16,7 +16,12 @@
         </div>
 
         <div class="col-lg-6 order3">
-          <div class="bg" ref="bgRef" :class="{ open: isMenuOpen }">
+          <div
+            class="bg"
+            ref="bgRef"
+            v-show="isMenuOpen || isDesktop"
+            :class="{ open: isMenuOpen }"
+          >
             <!-- navbar links -->
             <div class="full-width">
               <ul class="navbar-nav text-center">
@@ -105,12 +110,7 @@
   </nav>
 
   <teleport to="body">
-    <div
-      class="overlay"
-      v-show="isMenuOpen && !isDesktop"
-      @click.self="closeMenu"
-      style="z-index: 9999"
-    ></div>
+    <div class="overlay" v-show="isMenuOpen && !isDesktop"></div>
   </teleport>
 </template>
 
@@ -126,9 +126,6 @@ const bgRef = ref(null)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
-}
-const closeMenu = () => {
-  isMenuOpen.value = false
 }
 
 const handleResize = () => {
