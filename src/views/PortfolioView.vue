@@ -26,6 +26,7 @@
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
 import { preloadImages } from '@/composables/useImagePreloader.js'
 import PortfolioList from '@/components/PortfolioList.vue'
 import { usePortfolio } from '@/composables/usePortfolio.js'
@@ -34,6 +35,11 @@ import Masonry from 'masonry-layout'
 const displayedWorks = ref([]) // 實際顯示的作品
 const { portfolioData } = usePortfolio()
 const imagesLoaded = ref(false)
+const router = useRouter()
+
+function handleViewDetails(work) {
+  router.push(`/project/${work.id}`)
+}
 
 // 瀑布流重新計算
 const recalculateMasonryLayout = () => {
