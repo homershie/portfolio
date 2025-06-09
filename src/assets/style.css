@@ -25,7 +25,6 @@
   12. modal CSS START
   13. title CSS START
   14. about CSS START
-  15. awards CSS START
   16. blog CSS START
   17. brand CSS START
   18. resume CSS START
@@ -2116,14 +2115,6 @@ body.loaded {
   border-radius: 50%;
   color: #0c0c0c;
   font-size: 20px;
-}
-
-/* Awards
------------------------------------------------------------------*/
-.awards .award-item {
-  padding: 40px;
-  border-radius: 10px;
-  height: 100%;
 }
 
 /* Blogs
