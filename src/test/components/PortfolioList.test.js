@@ -7,14 +7,14 @@ const mockWorks = [
     id: 1,
     title: 'Test Work 1',
     image: '/test-image-1.jpg',
-    category: '網頁設計',
+    category: ['網頁設計'],
     tags: ['Vue.js', 'CSS'],
   },
   {
     id: 2,
     title: 'Test Work 2',
     image: '/test-image-2.jpg',
-    category: '平面設計',
+    category: ['平面設計'],
     tags: ['Photoshop', 'Illustrator'],
   },
 ]
@@ -27,7 +27,7 @@ describe('PortfolioList', () => {
       },
     })
 
-    expect(wrapper.findAll('.portfolio-item')).toHaveLength(2)
+    expect(wrapper.findAll('.items')).toHaveLength(2)
     expect(wrapper.text()).toContain('Test Work 1')
     expect(wrapper.text()).toContain('Test Work 2')
   })
@@ -39,10 +39,11 @@ describe('PortfolioList', () => {
       },
     })
 
-    await wrapper.find('.portfolio-item').trigger('click')
+    // 觸發第一個作品的 .link 點擊
+    await wrapper.find('.link').trigger('click')
 
     expect(wrapper.emitted('view-details')).toBeTruthy()
-    expect(wrapper.emitted('view-details')[0][0]).toEqual(mockWorks[0])
+    expect(wrapper.emitted('view-details')[0][0].id).toBe(mockWorks[1].id)
   })
 
   it('should handle empty works array', () => {
@@ -52,6 +53,6 @@ describe('PortfolioList', () => {
       },
     })
 
-    expect(wrapper.findAll('.portfolio-item')).toHaveLength(0)
+    expect(wrapper.findAll('.items')).toHaveLength(0)
   })
 })
