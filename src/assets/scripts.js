@@ -11,7 +11,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   'use strict'
-  /* global GLightbox, Swiper, gsap, Isotope */
+  /* global Swiper, gsap */
 
   /* =============================================================================
       --------------------------------  Performance & Error Handling   --------------------------------
@@ -367,20 +367,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.addEventListener('scroll', updateParallax)
-
-  /* =============================================================================
-      --------------------------------  Lightbox  ----------------------------------
-      ============================================================================= */
-
-  // Initialize GLightbox for images
-  if (window.GLightbox) {
-    GLightbox({
-      selector: '.popup-img .popimg, .gallery .popimg',
-      touchNavigation: true,
-      loop: true,
-      autoplayVideos: true,
-    })
-  }
 
   /* =============================================================================
       --------------------------------  Counter  ----------------------------------
@@ -745,29 +731,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 
-  /* =============================================================================
-      ------------------------------- 搜尋功能 -------------------------------
-      ============================================================================= */
-
-  const searchInput = document.getElementById('search-input')
-  if (searchInput) {
-    searchInput.addEventListener('input', function () {
-      const searchTerm = this.value.toLowerCase()
-      const blogPosts = document.querySelectorAll('.blog-post')
-
-      blogPosts.forEach(function (post) {
-        const postTitle = post.querySelector('.post-title')
-        if (postTitle) {
-          const titleText = postTitle.textContent.toLowerCase()
-          if (titleText.includes(searchTerm)) {
-            post.style.display = ''
-          } else {
-            post.style.display = 'none'
-          }
-        }
-      })
-    })
-  }
 
   /* =============================================================================
       -------------------------------  Preloader svg   -------------------------------
@@ -857,32 +820,6 @@ window.addEventListener('load', function () {
     body.classList.remove('loaded')
   }, 1500)
 
-  /* =============================================================================
-      -----------------------------  isotope Masonery   ------------------------------
-      ============================================================================= */
-
-  // Initialize Isotope
-  if (window.Isotope) {
-    const gallery = document.querySelector('.gallery')
-    if (gallery) {
-      const iso = new Isotope(gallery, {
-        itemSelector: '.items',
-      })
-
-      // Filter functionality
-      const filteringButtons = document.querySelectorAll('.filtering span')
-      filteringButtons.forEach((button) => {
-        button.addEventListener('click', function () {
-          const filterValue = this.getAttribute('data-filter')
-          iso.arrange({ filter: filterValue })
-
-          // Update active button
-          filteringButtons.forEach((btn) => btn.classList.remove('active'))
-          this.classList.add('active')
-        })
-      })
-    }
-  }
 
   /* =============================================================================
       -----------------------------  Contact Validation   -----------------------------
@@ -949,52 +886,5 @@ window.addEventListener('load', function () {
           })
       }
     })
-  }
-
-  /* =============================================================================
-      -----------------------------  Progress Button Scroll   -------------------------
-      ============================================================================= */
-
-  const progressPath = document.querySelector('.progress-wrap path')
-  if (progressPath) {
-    const pathLength = progressPath.getTotalLength()
-    progressPath.style.transition = progressPath.style.WebkitTransition = 'none'
-    progressPath.style.strokeDasharray = pathLength + ' ' + pathLength
-    progressPath.style.strokeDashoffset = pathLength
-    progressPath.getBoundingClientRect()
-    progressPath.style.transition = progressPath.style.WebkitTransition =
-      'stroke-dashoffset 10ms linear'
-
-    const updateProgress = function () {
-      const scroll = window.pageYOffset
-      const height = document.documentElement.scrollHeight - window.innerHeight
-      const progress = pathLength - (scroll * pathLength) / height
-      progressPath.style.strokeDashoffset = progress
-    }
-
-    updateProgress()
-    window.addEventListener('scroll', updateProgress)
-
-    const offset = 150
-    const progressWrap = document.querySelector('.progress-wrap')
-
-    window.addEventListener('scroll', function () {
-      if (window.pageYOffset > offset) {
-        progressWrap.classList.add('active-progress')
-      } else {
-        progressWrap.classList.remove('active-progress')
-      }
-    })
-
-    if (progressWrap) {
-      progressWrap.addEventListener('click', function (event) {
-        event.preventDefault()
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        })
-        return false
-      })
-    }
   }
 })
