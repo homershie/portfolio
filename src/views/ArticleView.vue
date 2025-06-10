@@ -41,7 +41,9 @@
                     <a :href="shareUrls.facebook" target="_blank"
                       ><i class="fab fa-facebook-f"></i
                     ></a>
-                    <a :href="shareUrls.twitter" target="_blank"><i class="fab fa-x"></i></a>
+                    <a :href="shareUrls.twitter" target="_blank"
+                      ><i class="fab fa-x-twitter"></i
+                    ></a>
                   </div>
                 </div>
               </div>

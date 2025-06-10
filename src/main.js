@@ -25,7 +25,13 @@ import {
 import { faEnvelope, faMap, faUser, faComments } from '@fortawesome/free-regular-svg-icons'
 
 // 引入品牌圖標
-import { faInstagram, faPinterest, faMedium, faGithub } from '@fortawesome/free-brands-svg-icons'
+import {
+  faInstagram,
+  faPinterest,
+  faMedium,
+  faGithub,
+  faXTwitter,
+} from '@fortawesome/free-brands-svg-icons'
 
 // 將圖標添加到庫中
 library.add(
@@ -43,7 +49,8 @@ library.add(
   faLightbulb,
   faBell,
   faStickyNote,
-  faMapMarkerAlt
+  faMapMarkerAlt,
+  faXTwitter
 )
 
 const app = createApp(App)
