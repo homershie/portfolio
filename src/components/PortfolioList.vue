@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, nextTick } from 'vue'
+import { computed, onMounted, nextTick, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Masonry from 'masonry-layout'
@@ -51,6 +51,7 @@ const props = defineProps({
   },
 })
 
+
 const emit = defineEmits(['view-details'])
 
 function viewDetails(work) {
@@ -61,9 +62,17 @@ const sortedWorks = computed(() => {
   return [...props.works].sort((a, b) => b.id - a.id)
 })
 
-onMounted(() => {
-  let masonryInstance = null
+let masonryInstance = null
 
+const handleResize = () => {
+  if (masonryInstance) {
+    setTimeout(() => {
+      masonryInstance.layout()
+    }, 100)
+  }
+}
+
+onMounted(() => {
   // 等待 DOM 完全渲染
   nextTick(() => {
     const container = document.querySelector('.gallery')
@@ -161,24 +170,14 @@ onMounted(() => {
       })
     }
 
-    // 窗口大小改變時重新布局
-    const handleResize = () => {
-      if (masonryInstance) {
-        setTimeout(() => {
-          masonryInstance.layout()
-        }, 100)
-      }
-    }
-
     window.addEventListener('resize', handleResize)
-
-    // 清理函數
-    return () => {
-      if (masonryInstance) {
-        masonryInstance.destroy()
-      }
-      window.removeEventListener('resize', handleResize)
-    }
   })
+})
+
+onUnmounted(() => {
+  if (masonryInstance) {
+    masonryInstance.destroy()
+  }
+  window.removeEventListener('resize', handleResize)
 })
 </script>
