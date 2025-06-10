@@ -11,17 +11,15 @@ describe('useImagePreloader', () => {
     // Mock Image constructor
     global.Image = vi.fn().mockImplementation(() => {
       const img = {
-        addEventListener: vi.fn(),
+        addEventListener: vi.fn((event, handler) => {
+          if (event === 'load') {
+            // 立即觸發 load 事件
+            setTimeout(() => handler(), 0)
+          }
+        }),
         removeEventListener: vi.fn(),
         src: '',
       }
-
-      // 模擬圖片載入成功
-      setTimeout(() => {
-        const loadHandler = img.addEventListener.mock.calls.find(call => call[0] === 'load')?.[1]
-        if (loadHandler) loadHandler()
-      }, 0)
-
       return img
     })
 
@@ -40,17 +38,17 @@ describe('useImagePreloader', () => {
   it('should handle image load errors gracefully', async () => {
     global.Image = vi.fn().mockImplementation(() => {
       const img = {
-        addEventListener: vi.fn(),
+        addEventListener: vi.fn((event, handler) => {
+          if (event === 'error') {
+            // 立即觸發 error 事件
+            setTimeout(() => handler(), 0)
+          } else if (event === 'load') {
+            // 不觸發 load 事件，模擬載入失敗
+          }
+        }),
         removeEventListener: vi.fn(),
         src: '',
       }
-
-      // 模擬圖片載入錯誤
-      setTimeout(() => {
-        const errorHandler = img.addEventListener.mock.calls.find(call => call[0] === 'error')?.[1]
-        if (errorHandler) errorHandler()
-      }, 0)
-
       return img
     })
 
