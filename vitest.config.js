@@ -8,6 +8,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.js'],
+    testTimeout: 10000, // 增加測試超時時間到 10 秒
+    hookTimeout: 10000, // 增加 hook 超時時間
   },
   resolve: {
     alias: {

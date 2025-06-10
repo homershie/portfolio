@@ -1,5 +1,9 @@
 // Vitest setup file
 import { config } from '@vue/test-utils'
+import { vi } from 'vitest'
+
+// Make vi available globally
+global.vi = vi
 
 // Global test setup
 config.global.mocks = {

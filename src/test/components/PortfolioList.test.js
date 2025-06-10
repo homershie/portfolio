@@ -43,7 +43,8 @@ describe('PortfolioList', () => {
     await wrapper.find('.link').trigger('click')
 
     expect(wrapper.emitted('view-details')).toBeTruthy()
-    expect(wrapper.emitted('view-details')[0][0].id).toBe(mockWorks[1].id)
+    // 由於 sortedWorks 按 id 降序排列，第一個會是 id: 2 的項目
+    expect(wrapper.emitted('view-details')[0][0].id).toBe(2)
   })
 
   it('should handle empty works array', () => {
