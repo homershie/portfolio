@@ -155,27 +155,21 @@ async function submitForm() {
   formMessage.value = ''
 
   try {
-    // 模擬表單提交（實際應用中需要連接到後端API）
-    await new Promise(resolve => setTimeout(resolve, 2000))
-
-    // 模擬成功響應
-    formMessage.value = '訊息已成功發送！我會盡快回復您。'
-    messageClass.value = 'alert alert-success'
-
-    // 重置表單
-    Object.keys(form).forEach(key => {
-      form[key] = ''
+    const res = await fetch('https://portfolio-backend-pky9.onrender.com/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
     })
+    if (!res.ok) throw new Error()
+    formMessage.value = '訊息已成功發送！'
+    messageClass.value = 'alert alert-success'
+    Object.keys(form).forEach(k => (form[k] = ''))
   } catch {
-    formMessage.value = '發送失敗，請稍後再試或直接發送電子郵件給我。'
+    formMessage.value = '發送失敗，請稍後再試。'
     messageClass.value = 'alert alert-danger'
   } finally {
     isSubmitting.value = false
-
-    // 5秒後清除訊息
-    setTimeout(() => {
-      formMessage.value = ''
-    }, 5000)
+    setTimeout(() => (formMessage.value = ''), 5000)
   }
 }
 </script>

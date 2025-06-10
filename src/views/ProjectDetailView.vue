@@ -14,7 +14,7 @@
               ></iframe>
             </template>
             <template v-else>
-              <img :src="project.mainImage" :alt="project.title" class="radius-5 w-md-50 w-100" />
+              <img :src="project.mainImage" :alt="project.title" class="radius-5 w-50" />
             </template>
           </div>
           <div class="row justify-content-center">
@@ -80,6 +80,8 @@ import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePortfolio } from '@/composables/usePortfolio.js'
 import Preloader from '@/components/PreLoader.vue'
+import { enableImageLightbox } from '@/composables/useLightBox.js'
+import { watch } from 'vue'
 
 const route = useRoute()
 const project = ref(null)
@@ -101,6 +103,24 @@ const formatDate = dateString => {
     day: 'numeric',
   })
 }
+
+watch(
+  () => project.value,
+  newProject => {
+    if (newProject) {
+      // 收集主圖與 gallery 圖片
+      const images = []
+      if (newProject.mainImage) images.push(newProject.mainImage)
+      if (Array.isArray(newProject.gallery)) {
+        images.push(...newProject.gallery.filter(Boolean))
+      }
+      if (images.length) {
+        enableImageLightbox(images)
+      }
+    }
+  },
+  { immediate: true }
+)
 
 // 格式化類別陣列
 const formatCategory = categories => {
