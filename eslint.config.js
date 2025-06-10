@@ -18,6 +18,9 @@ export default [
       '**/*.d.ts',
       '**/public/**',
       '**/vite.config.js.timestamp-*',
+      '**/.env.local',
+      '**/.env.*.local',
+      '**/.DS_Store',
     ],
   },
 
