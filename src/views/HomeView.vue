@@ -13,7 +13,8 @@
                       <h6><router-link to="/about">關於我</router-link></h6>
                     </div>
                     <div class="text-center mt-30">
-                      <a href="/assets/resume/Homer_Shie_Resume.pdf" target="_blank">
+                      <!-- 使用相對路徑以支援 GitHub Pages 的子路徑部署 -->
+                      <a href="assets/resume/Homer_Shie_Resume.pdf" target="_blank">
                         <svg
                           class="arrow-down"
                           xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +166,8 @@
               <router-link to="/contact" class="inf-butn">
                 <span>聯絡我</span>
               </router-link>
-              <a href="/assets/resume/Homer_Shie_Resume.pdf" class="inf-butn" target="_blank">
+              <!-- 同樣調整為相對路徑 -->
+              <a href="assets/resume/Homer_Shie_Resume.pdf" class="inf-butn" target="_blank">
                 <span>下載履歷</span>
               </a>
             </div>
