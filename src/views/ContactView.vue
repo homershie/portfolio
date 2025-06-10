@@ -166,8 +166,7 @@ async function submitForm() {
     Object.keys(form).forEach(key => {
       form[key] = ''
     })
-  } catch (error) {
-    console.error('表單發送錯誤:', error)
+  } catch {
     formMessage.value = '發送失敗，請稍後再試或直接發送電子郵件給我。'
     messageClass.value = 'alert alert-danger'
   } finally {
