@@ -52,6 +52,8 @@ function openLightbox(src, alt) {
   document.body.appendChild(modal)
 }
 
-onMounted(() => {
-  enableImageLightbox()
-})
+export function useLightBox() {
+  onMounted(() => {
+    enableImageLightbox()
+  })
+}
