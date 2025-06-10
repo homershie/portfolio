@@ -72,7 +72,7 @@ npm run format:check # 檢查格式化狀態
 npm run test         # 開發模式測試
 npm run test:run     # 單次執行測試
 npm run test:ui      # 測試 UI 介面
-npm run test:coverage # 測試覆蓋率
+npm run test:coverage # 測試覆蓋率 (需安裝 @vitest/coverage-v8)
 ```
 
 ### 完整品質檢查
